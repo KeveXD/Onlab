@@ -3,9 +3,9 @@ package hu.bme.aut.android.proba3
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class Register : AppCompatActivity() {
+class Menu : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
+        setContentView(R.layout.activity_menu)
     }
 }
