@@ -1,10 +1,9 @@
 package hu.bme.aut.android.proba3
 
-import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
+import hu.bme.aut.android.proba3.login.AuthListener
 
 class AuthViewModel : ViewModel() {
 
@@ -21,12 +20,6 @@ class AuthViewModel : ViewModel() {
             authListener?.onFailure("Nem jo a email vagy a jelszó")
             return
         }
-
-
-
-
-
-
 
     }
 

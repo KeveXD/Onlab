@@ -1,4 +1,4 @@
-package hu.bme.aut.android.proba3
+package hu.bme.aut.android.proba3.login
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -10,9 +10,13 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import hu.bme.aut.android.proba3.AuthViewModel
+import hu.bme.aut.android.proba3.R
 import hu.bme.aut.android.proba3.databinding.LoginBinding
+import hu.bme.aut.android.proba3.main.MenuActivity
+import hu.bme.aut.android.proba3.main.PocketActivity
 
-class MainActivity : AppCompatActivity(), AuthListener {
+class LoginActivity : AppCompatActivity(), AuthListener {
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +27,7 @@ class MainActivity : AppCompatActivity(), AuthListener {
         val registerText: TextView=findViewById(R.id.text_register)
 
         registerText.setOnClickListener{
-            val intent = Intent(this, RegisterActivity::class.java)
+            val intent = Intent(this, MenuActivity::class.java)
             startActivity(intent)
         }
 
@@ -52,7 +56,7 @@ class MainActivity : AppCompatActivity(), AuthListener {
             ?.addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    val intent = Intent(this, MainActivity::class.java)
+                    val intent = Intent(this, LoginActivity::class.java)
                     startActivity(intent)
 
                     Toast.makeText(baseContext, "Autentikáció sikeres", Toast.LENGTH_SHORT).show()
@@ -69,7 +73,7 @@ class MainActivity : AppCompatActivity(), AuthListener {
             ?.addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    val intent = Intent(this, MainActivity::class.java)
+                    val intent = Intent(this, LoginActivity::class.java)
                     startActivity(intent)
 
                     Toast.makeText(baseContext, "Autentikáció sikeres", Toast.LENGTH_SHORT).show()

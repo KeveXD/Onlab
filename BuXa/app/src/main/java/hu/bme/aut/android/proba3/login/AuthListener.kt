@@ -1,4 +1,4 @@
-package hu.bme.aut.android.proba3
+package hu.bme.aut.android.proba3.login
 
 
 interface AuthListener {

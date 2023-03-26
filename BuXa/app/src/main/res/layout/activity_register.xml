@@ -16,7 +16,7 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".RegisterActivity">
+        tools:context=".login.RegisterActivity">
 
 
         <RelativeLayout
@@ -71,7 +71,8 @@
                     android:hint="email"
                     android:inputType="textEmailAddress"
                     android:padding="12dp"
-                    android:text="@={viewmodel.email}" />
+                    android:text="@={viewmodel.email}"
+                    />
 
                 <EditText
                     android:id="@+id/edit_text_password"
@@ -107,6 +108,14 @@
 
 
         </RelativeLayout>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button"
+            tools:layout_editor_absoluteX="146dp"
+            tools:layout_editor_absoluteY="563dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
