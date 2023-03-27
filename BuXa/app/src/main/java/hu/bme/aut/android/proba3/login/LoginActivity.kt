@@ -10,11 +10,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import hu.bme.aut.android.proba3.AuthViewModel
 import hu.bme.aut.android.proba3.R
 import hu.bme.aut.android.proba3.databinding.LoginBinding
-import hu.bme.aut.android.proba3.main.MenuActivity
-import hu.bme.aut.android.proba3.main.PocketActivity
 
 class LoginActivity : AppCompatActivity(), AuthListener {
     private lateinit var auth: FirebaseAuth

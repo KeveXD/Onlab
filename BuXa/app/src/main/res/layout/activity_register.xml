@@ -7,7 +7,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="hu.bme.aut.android.proba3.AuthViewModel" />
+            type="hu.bme.aut.android.proba3.login.AuthViewModel" />
     </data>
 
 

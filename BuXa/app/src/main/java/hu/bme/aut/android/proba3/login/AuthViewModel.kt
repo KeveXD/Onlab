@@ -1,9 +1,8 @@
-package hu.bme.aut.android.proba3
+package hu.bme.aut.android.proba3.login
 
 import android.view.View
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
-import hu.bme.aut.android.proba3.login.AuthListener
 
 class AuthViewModel : ViewModel() {
 
