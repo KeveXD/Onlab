@@ -3,8 +3,10 @@ package hu.bme.aut.android.proba3.login
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ProgressBar
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -15,21 +17,24 @@ import hu.bme.aut.android.proba3.R
 class RegisterActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
         val registerButton: Button =findViewById(R.id.button_register)
         val keszButton: Button =findViewById(R.id.button)
+        val progressBar: ProgressBar=findViewById(R.id.progress_bar)
 
         auth= Firebase.auth
         registerButton.setOnClickListener{
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
+            progressBar.setVisibility(View.VISIBLE)
+            performSignUp()
+            progressBar.setVisibility(View.GONE)
         }
         keszButton.setOnClickListener{
-            performSignUp()
-
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
         }
 
     }
@@ -44,7 +49,7 @@ class RegisterActivity : AppCompatActivity() {
             ?.addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    val intent = Intent(this, MenuActivity::class.java)
+                    val intent = Intent(this, LoginActivity::class.java)
                     startActivity(intent)
 
                     Toast.makeText(baseContext, "Autentikáció sikeres", Toast.LENGTH_SHORT).show()

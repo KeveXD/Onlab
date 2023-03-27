@@ -8,7 +8,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="hu.bme.aut.android.proba3.login.AuthViewModel" />
+            type="hu.bme.aut.android.proba3.login.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -108,6 +108,12 @@
                     android:text="Elfelejtette a jelszót?"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="#3A2C2B" />
+                <ProgressBar
+                    android:id="@+id/progressbar"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                </ProgressBar>
 
                 <Button
                     android:id="@+id/button_sign_in"

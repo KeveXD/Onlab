@@ -17,7 +17,7 @@
             android:name=".main.MenuActivity"
             android:exported="false" />
         <activity
-            android:name=".login.AuthViewModel"
+            android:name=".login.LoginViewModel"
             android:exported="false" />
         <activity
             android:name=".login.RegisterActivity"

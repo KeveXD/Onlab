@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "235023460859",
-    "project_id": "buxa2-3e64b",
-    "storage_bucket": "buxa2-3e64b.appspot.com"
+    "project_number": "321800003219",
+    "project_id": "buxa-6d447",
+    "storage_bucket": "buxa-6d447.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:235023460859:android:4e302f06d833aa9834435e",
+        "mobilesdk_app_id": "1:321800003219:android:2bad3015eaea078f953766",
         "android_client_info": {
           "package_name": "hu.bme.aut.android.proba3"
         }
       },
       "oauth_client": [
         {
-          "client_id": "235023460859-aqb8pcojlpi64kndls2tm55s11movf7c.apps.googleusercontent.com",
+          "client_id": "321800003219-i52qnv5vue1hpvbf0kosks1rto6pao1q.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBUmrRkYN2pVUfhE-TlhsQc8LQMDE7DTi0"
+          "current_key": "AIzaSyApQqYUKFdOlFgS4vdwNxutPwDAc64kNiE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "235023460859-aqb8pcojlpi64kndls2tm55s11movf7c.apps.googleusercontent.com",
+              "client_id": "321800003219-i52qnv5vue1hpvbf0kosks1rto6pao1q.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
