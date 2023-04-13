@@ -13,8 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Material3.Dark"
         tools:targetApi="31">
+        <activity android:name="hu.bme.aut.android.proba3.tartozas.Tartozas" />
+
         <activity
-            android:name=".name.MenuActivity"
+            android:name=".Tartozas"
+            android:exported="false" />
+        <activity
+            android:name=".main.MenuActivity"
             android:exported="false" />
         <activity
             android:name=".login.LoginViewModel"

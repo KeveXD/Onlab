@@ -1,12 +1,12 @@
-package hu.bme.aut.android.proba3.name
+package hu.bme.aut.android.proba3.tartozas
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import hu.bme.aut.android.proba3.R
 
-class MenuActivity : AppCompatActivity() {
+class Tartozas : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_menu)
+        setContentView(R.layout.activity_tartozas)
     }
 }

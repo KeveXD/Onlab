@@ -1,4 +1,4 @@
-package hu.bme.aut.android.proba3.name
+package hu.bme.aut.android.proba3.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

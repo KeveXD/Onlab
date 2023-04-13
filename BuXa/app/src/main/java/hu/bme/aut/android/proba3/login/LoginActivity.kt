@@ -13,7 +13,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import hu.bme.aut.android.proba3.R
 import hu.bme.aut.android.proba3.databinding.LoginBinding
-import hu.bme.aut.android.proba3.name.MenuActivity
+import hu.bme.aut.android.proba3.main.MenuActivity
 
 class LoginActivity : AppCompatActivity(), LoginListener {
     private lateinit var auth: FirebaseAuth
