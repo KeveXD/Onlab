@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.auth.FirebaseAuth
@@ -36,8 +37,14 @@ class LoginActivity : AppCompatActivity(), LoginListener {
         auth= Firebase.auth
         viewModel.auth=auth
         viewModel.activity=this
-        viewModel.password= binding.editTextPassword.toString()
-        viewModel.email=binding.editTextEmail.toString()
+
+        binding.editTextEmail.addTextChangedListener {
+            viewModel.email = it.toString()
+        }
+
+        binding.editTextPassword.addTextChangedListener {
+            viewModel.password = it.toString()
+        }
 
     }
 
