@@ -13,7 +13,7 @@ import hu.bme.aut.android.proba3.databinding.ActivityTartozasBinding
 import hu.bme.aut.android.proba3.databinding.LoginBinding
 import hu.bme.aut.android.proba3.login.RegisterActivity
 
-class Tartozas : AppCompatActivity(), PaymentAdapter.mainFigyeloInterface,
+class DebtFunction : AppCompatActivity(), PaymentAdapter.mainFigyeloInterface,
     PaymentFragment.FragmentInterface {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
