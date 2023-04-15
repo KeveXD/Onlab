@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="hu.bme.aut.android.proba3.tartozas.detailes.ViewModelDetails" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".tartozas.FunctionDebt">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="911dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintVertical_bias="0.0">
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvMain"
+            android:layout_width="0dp"
+            android:layout_height="516dp"
+            app:layout_anchor="@+id/rvMain"
+            app:layout_anchorGravity="center"
+            tools:listitem="@layout/tartozas_detailes_listaelem"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+            app:layout_constraintBottom_toTopOf="@+id/bSzamol"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="NotSibling" />
+
+        <Button
+            android:id="@+id/bSzamol"
+            android:layout_width="106dp"
+            android:layout_height="68dp"
+            android:layout_margin="24dp"
+            android:layout_marginBottom="28dp"
+            android:background="@color/design_default_color_error"
+            android:text="Számol"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+
+
+
+
+
+
+
+
+
+

@@ -7,6 +7,11 @@ plugins {
 }
 
 android {
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+    }
+
     compileSdk 33
     buildFeatures {
         dataBinding true
@@ -16,7 +21,7 @@ android {
     defaultConfig {
         multiDexEnabled true
         applicationId "hu.bme.aut.android.proba3"
-        minSdk 21
+        minSdk 26
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -67,4 +72,10 @@ dependencies {
 
     implementation platform('com.google.firebase:firebase-bom:31.2.3')
     implementation 'com.google.firebase:firebase-auth-ktx'
+
+    //logolashoz kell
+    implementation 'org.slf4j:slf4j-api:1.7.30'
+    implementation 'org.apache.logging.log4j:log4j-slf4j-impl:2.14.1'
+    implementation 'org.apache.logging.log4j:log4j-api:2.14.1'
+    implementation 'org.apache.logging.log4j:log4j-core:2.14.1'
 }

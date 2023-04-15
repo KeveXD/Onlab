@@ -24,9 +24,8 @@ class AdapterDebt(private val listener: mainFigyeloInterface) :
         holder.binding.tvDescription.text = p.description
         holder.binding.tvAmount.text = "${p.amount} Ft"
 
-
+        //a kuka gomb megnyomasakor meghivjuk a torles fuggvenyt a helyi interfacen
         holder.binding.ibEdit.setOnClickListener(){
-
             listener.onItemDelete(p,position)
         }
     }
@@ -51,7 +50,7 @@ class AdapterDebt(private val listener: mainFigyeloInterface) :
     }
 
     interface mainFigyeloInterface {
-        fun onItemChanged(item: DebtItem)
+        //fun onItemChanged(item: DebtItem)
         fun onItemDelete(item: DebtItem, position: Int)
     }
 

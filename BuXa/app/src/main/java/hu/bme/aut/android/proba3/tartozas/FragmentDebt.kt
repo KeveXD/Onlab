@@ -13,10 +13,6 @@ import hu.bme.aut.android.proba3.tartozas.data.DebtItem
 
 class FragmentDebt : DialogFragment() {
 
-    interface FragmentInterface {
-        fun newPaymentCreated(newItem: DebtItem)
-    }
-
     private lateinit var listener: FragmentInterface
 
     private lateinit var binding: DialogUjTartozasBinding
@@ -54,4 +50,8 @@ class FragmentDebt : DialogFragment() {
         isPayed = false
 
     )
+
+    interface FragmentInterface {
+        fun newPaymentCreated(newItem: DebtItem)
+    }
 }

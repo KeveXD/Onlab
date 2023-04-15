@@ -8,6 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
+import androidx.databinding.adapters.TextViewBindingAdapter.setText
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -31,6 +32,8 @@ class LoginActivity : AppCompatActivity(), LoginListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
+
+       
 
         binding.viewmodel=viewModel
         viewModel.listener=this

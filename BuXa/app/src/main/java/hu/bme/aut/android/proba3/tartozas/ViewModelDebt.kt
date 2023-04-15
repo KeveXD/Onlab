@@ -10,29 +10,13 @@ import hu.bme.aut.android.proba3.tartozas.data.DebtItem
 import kotlin.concurrent.thread
 
 class ViewModelDebt: ViewModel() {
-    var listener: ContactDebt?=null
     lateinit var database: DatabaseDebt
     lateinit var adapter: AdapterDebt
     //runOnUiThread miatt kell
     lateinit var context: Context
 
-    fun loadItemsInBackground2() {
-        thread {
-            val items = database.DatabaseDebtFun().getAll()
-            (context as Activity).runOnUiThread {
-                adapter.update(items)
-            }
-        }
-    }
 
-    fun onItemChanged2(item: DebtItem) {
-        thread {
-            database.DatabaseDebtFun().update(item)
-            Log.d("MainActivity", "Payment update was successful")
-        }
-    }
-
-    fun onItemDelete2(item: DebtItem, position: Int) {
+    fun onItemDelete(item: DebtItem, position: Int) {
         thread {
             database.DatabaseDebtFun().deleteItem(item)
             (context as Activity).runOnUiThread{
@@ -41,7 +25,7 @@ class ViewModelDebt: ViewModel() {
         }
     }
 
-    fun newPaymentCreated2(newItem: DebtItem) {
+    fun newPaymentCreated(newItem: DebtItem) {
         thread {
             val insertId = database.DatabaseDebtFun().insert(newItem)
             newItem.id = insertId
@@ -51,5 +35,17 @@ class ViewModelDebt: ViewModel() {
         }
     }
 
+    fun loadItemsInBackground() {
+        thread {
+            val items = database.DatabaseDebtFun().getAll()
+            (context as Activity).runOnUiThread {
+                adapter.update(items)
+            }
+        }
+    }
+
+    interface mainFigyelo{
+
+    }
 
 }
