@@ -8,12 +8,13 @@ import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import hu.bme.aut.android.proba3.databinding.DialogUjTartozasBinding
+import hu.bme.aut.android.proba3.tartozas.data.DebtItem
 
 
-class PaymentFragment : DialogFragment() {
+class FragmentDebt : DialogFragment() {
 
     interface FragmentInterface {
-        fun newPaymentCreated(newItem: DebtDatabase)
+        fun newPaymentCreated(newItem: DebtItem)
     }
 
     private lateinit var listener: FragmentInterface
@@ -45,7 +46,7 @@ class PaymentFragment : DialogFragment() {
         return false
     }
 
-    private fun getItem() = DebtDatabase(
+    private fun getItem() = DebtItem(
         who = binding.etWho.text.toString(),
         whom = binding.etWhom.text.toString(),
         description = binding.etDescription.text.toString(),

@@ -1,4 +1,4 @@
-package hu.bme.aut.android.proba3.tartozas
+package hu.bme.aut.android.proba3.tartozas.data
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 
 @Entity(tableName = "debtList")
-data class DebtDatabase(
+data class DebtItem(
     @ColumnInfo(name = "id") @PrimaryKey(autoGenerate = true) var id: Long? = null,
     @ColumnInfo(name = "who") var who: String,
     @ColumnInfo(name = "whom") var whom: String,

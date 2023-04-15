@@ -4,12 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import hu.bme.aut.android.proba3.databinding.TartozasListaBinding
+import hu.bme.aut.android.proba3.tartozas.data.DebtItem
 
 
-class PaymentAdapter(private val listener: mainFigyeloInterface) :
-    RecyclerView.Adapter<PaymentAdapter.SajatViewHolder>() {
+class AdapterDebt(private val listener: mainFigyeloInterface) :
+    RecyclerView.Adapter<AdapterDebt.SajatViewHolder>() {
 
-    private val payments = mutableListOf<DebtDatabase>()
+    private val payments = mutableListOf<DebtItem>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = SajatViewHolder(
         TartozasListaBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -33,12 +34,12 @@ class PaymentAdapter(private val listener: mainFigyeloInterface) :
     override fun getItemCount(): Int = payments.size
 
 
-    fun addItem(item: DebtDatabase) {
+    fun addItem(item: DebtItem) {
         payments.add(item)
         notifyItemInserted(payments.size - 1)
     }
 
-    fun update(newPayments: List<DebtDatabase>) {
+    fun update(newPayments: List<DebtItem>) {
         payments.clear()
         payments.addAll(newPayments)
         notifyDataSetChanged()
@@ -50,8 +51,8 @@ class PaymentAdapter(private val listener: mainFigyeloInterface) :
     }
 
     interface mainFigyeloInterface {
-        fun onItemChanged(item: DebtDatabase)
-        fun onItemDelete(item: DebtDatabase, position: Int)
+        fun onItemChanged(item: DebtItem)
+        fun onItemDelete(item: DebtItem, position: Int)
     }
 
     inner class SajatViewHolder(val binding: TartozasListaBinding) : RecyclerView.ViewHolder(binding.root)

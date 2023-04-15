@@ -7,7 +7,7 @@ import android.widget.ImageButton
 import androidx.databinding.DataBindingUtil
 import hu.bme.aut.android.proba3.R
 import hu.bme.aut.android.proba3.databinding.ActivityMenuBinding
-import hu.bme.aut.android.proba3.tartozas.DebtFunction
+import hu.bme.aut.android.proba3.tartozas.FunctionDebt
 
 class MenuActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,7 +17,7 @@ class MenuActivity : AppCompatActivity() {
         val befektetesGomb: ImageButton =findViewById(R.id.ibBefektetes)
 
         befektetesGomb.setOnClickListener{
-            val intent = Intent(this, DebtFunction::class.java)
+            val intent = Intent(this, FunctionDebt::class.java)
             startActivity(intent)
         }
 
