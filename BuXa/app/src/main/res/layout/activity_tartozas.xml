@@ -6,7 +6,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
         <data>
-
+                <variable
+                    name="viewmodel"
+                    type="hu.bme.aut.android.proba3.tartozas.ViewModelDebt" />
                   </data>
 
         <androidx.constraintlayout.widget.ConstraintLayout
