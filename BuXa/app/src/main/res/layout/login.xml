@@ -70,7 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/linearLayout1"
-                android:background="#ffffff"
+                android:background="#232B59"
                 android:orientation="vertical"
                 android:padding="18dp">
 
@@ -108,12 +108,12 @@
                     android:text="Elfelejtette a jelszót?"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="#3A2C2B" />
+
                 <ProgressBar
                     android:id="@+id/progressbar"
-                    android:visibility="gone"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                </ProgressBar>
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"></ProgressBar>
 
                 <Button
                     android:id="@+id/button_sign_in"
