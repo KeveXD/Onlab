@@ -45,8 +45,9 @@ class AdapterDetails(private val listener: mainFigyeloInterface) :
     override fun getItemCount(): Int = tartozasok.size
 
     //loadItems fuggveny hasznalja
-    fun update(newPayments: List<DebtItem>) {
+    fun update(newPayments: MutableList<DebtItem>) {
         tartozasok.clear()
+        println("Tomb elemszama: %d".format(newPayments.size))
         tartozasok.addAll(newPayments)
         notifyDataSetChanged()
     }

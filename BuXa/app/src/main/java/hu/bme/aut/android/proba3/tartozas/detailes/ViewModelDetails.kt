@@ -13,7 +13,7 @@ import kotlin.concurrent.thread
 
 
 class ViewModelDetails(): ViewModel() {
-    //var listener: ContactDetails?=null
+
     lateinit var database: DatabaseDebt
     lateinit var adapter: AdapterDetails
 
@@ -24,7 +24,7 @@ class ViewModelDetails(): ViewModel() {
 
     fun loadItemsInBackground() {
         thread {
-            val items =database.DatabaseDebtFun().getAll()
+            val items =database.DatabaseDebtFun().getAll().toMutableList()
             (context as Activity).runOnUiThread {
                 adapter.update(items)
             }
@@ -32,9 +32,7 @@ class ViewModelDetails(): ViewModel() {
     }
     fun updateItems() {
         thread {
-            println("naaaa: %d".format(adapter.tartozasok.size))
-
-            val items = adapter.tartozasok//database.DatabaseDebtFun().getAll()
+            val items = adapter.tartozasok//database.DatabaseDebtFun().getAll().toMutableList()
             (context as Activity).runOnUiThread {
                 adapter.update(items)
             }

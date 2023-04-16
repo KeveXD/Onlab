@@ -21,7 +21,7 @@ android {
     defaultConfig {
         multiDexEnabled true
         applicationId "hu.bme.aut.android.proba3"
-        minSdk 26
+        minSdk 28
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -51,9 +51,11 @@ android {
 }
 
 dependencies {
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
     ext {
         room_version = "2.5.0"
     }
+
 
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"

@@ -38,11 +38,12 @@ class Detailes : AppCompatActivity(), AdapterDetails.mainFigyeloInterface,ViewMo
         viewModel.database=database
 
         szamol.setOnClickListener{
-            println("Megnyomtam a Szamol gombot")
+
             viewModel.initKulcsok()
             viewModel.szamol()
-            println("Details en belul tartozasok szama: %d".format(adapter.tartozasok.size))
+            println("Tomb elemszama: %d".format(adapter.tartozasok.size))
             viewModel.updateItems()
+
         }
 
         //Init RecicleView

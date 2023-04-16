@@ -33,7 +33,7 @@ class LoginActivity : AppCompatActivity(), LoginListener {
             startActivity(intent)
         }
 
-       
+
 
         binding.viewmodel=viewModel
         viewModel.listener=this
