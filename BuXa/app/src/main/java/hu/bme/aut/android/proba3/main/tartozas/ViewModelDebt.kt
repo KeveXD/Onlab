@@ -1,12 +1,11 @@
-package hu.bme.aut.android.proba3.tartozas
+package hu.bme.aut.android.proba3.main.tartozas
 
 import android.app.Activity
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.ViewModel
 
-import hu.bme.aut.android.proba3.tartozas.data.DatabaseDebt
-import hu.bme.aut.android.proba3.tartozas.data.DebtItem
+import hu.bme.aut.android.proba3.main.tartozas.data.DatabaseDebt
+import hu.bme.aut.android.proba3.main.tartozas.data.DebtItem
 import kotlin.concurrent.thread
 
 class ViewModelDebt: ViewModel() {

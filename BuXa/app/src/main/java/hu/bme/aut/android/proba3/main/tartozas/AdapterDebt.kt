@@ -1,10 +1,10 @@
-package hu.bme.aut.android.proba3.tartozas
+package hu.bme.aut.android.proba3.main.tartozas
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import hu.bme.aut.android.proba3.databinding.TartozasListaBinding
-import hu.bme.aut.android.proba3.tartozas.data.DebtItem
+import hu.bme.aut.android.proba3.main.tartozas.data.DebtItem
 
 
 class AdapterDebt(private val listener: mainFigyeloInterface) :

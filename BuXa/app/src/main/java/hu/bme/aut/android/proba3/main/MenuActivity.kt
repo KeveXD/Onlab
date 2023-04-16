@@ -7,7 +7,7 @@ import android.widget.ImageButton
 import androidx.databinding.DataBindingUtil
 import hu.bme.aut.android.proba3.R
 import hu.bme.aut.android.proba3.databinding.ActivityMenuBinding
-import hu.bme.aut.android.proba3.tartozas.FunctionDebt
+import hu.bme.aut.android.proba3.main.tartozas.FunctionDebt
 
 class MenuActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

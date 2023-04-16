@@ -16,8 +16,8 @@
         <activity
             android:name=".Pocket"
             android:exported="false" />
-        <activity android:name=".tartozas.detailes.Detailes" />
-        <activity android:name="hu.bme.aut.android.proba3.tartozas.FunctionDebt" />
+        <activity android:name="hu.bme.aut.android.proba3.main.tartozas.detailes.Detailes" />
+        <activity android:name="hu.bme.aut.android.proba3.main.tartozas.FunctionDebt" />
         <activity
             android:name=".main.MenuActivity"
             android:exported="false" />

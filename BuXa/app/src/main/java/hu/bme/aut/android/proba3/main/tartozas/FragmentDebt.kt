@@ -1,4 +1,4 @@
-package hu.bme.aut.android.proba3.tartozas
+package hu.bme.aut.android.proba3.main.tartozas
 
 
 import android.app.Dialog
@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import hu.bme.aut.android.proba3.databinding.DialogUjTartozasBinding
-import hu.bme.aut.android.proba3.tartozas.data.DebtItem
+import hu.bme.aut.android.proba3.main.tartozas.data.DebtItem
 
 
 class FragmentDebt : DialogFragment() {

@@ -1,4 +1,4 @@
-package hu.bme.aut.android.proba3.tartozas.detailes
+package hu.bme.aut.android.proba3.main.tartozas.detailes
 
 import android.annotation.SuppressLint
 import android.graphics.Color
@@ -6,8 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import hu.bme.aut.android.proba3.databinding.TartozasDetailesListaelemBinding
-import hu.bme.aut.android.proba3.databinding.TartozasListaBinding
-import hu.bme.aut.android.proba3.tartozas.data.DebtItem
+import hu.bme.aut.android.proba3.main.tartozas.data.DebtItem
 
 
 class AdapterDetails(private val listener: mainFigyeloInterface) :

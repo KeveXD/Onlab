@@ -1,4 +1,4 @@
-package hu.bme.aut.android.proba3.tartozas.data
+package hu.bme.aut.android.proba3.main.tartozas.data
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

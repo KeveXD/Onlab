@@ -1,4 +1,4 @@
-package hu.bme.aut.android.proba3.tartozas
+package hu.bme.aut.android.proba3.main.tartozas
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -10,12 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import hu.bme.aut.android.proba3.R
 import hu.bme.aut.android.proba3.databinding.ActivityTartozasBinding
-import hu.bme.aut.android.proba3.login.LoginViewModel
-import hu.bme.aut.android.proba3.login.RegisterActivity
-import hu.bme.aut.android.proba3.tartozas.data.DatabaseDebt
-import hu.bme.aut.android.proba3.tartozas.data.DebtItem
-import hu.bme.aut.android.proba3.tartozas.detailes.Detailes
-import kotlin.concurrent.thread
+import hu.bme.aut.android.proba3.main.tartozas.data.DatabaseDebt
+import hu.bme.aut.android.proba3.main.tartozas.data.DebtItem
+import hu.bme.aut.android.proba3.main.tartozas.detailes.Detailes
 
 lateinit var viewModel: ViewModelDebt
 class FunctionDebt : AppCompatActivity(), AdapterDebt.mainFigyeloInterface,

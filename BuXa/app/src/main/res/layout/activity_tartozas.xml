@@ -8,13 +8,13 @@
         <data>
                 <variable
                     name="viewmodel"
-                    type="hu.bme.aut.android.proba3.tartozas.ViewModelDebt" />
+                    type="hu.bme.aut.android.proba3.main.tartozas.ViewModelDebt" />
                   </data>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".tartozas.FunctionDebt">
+            tools:context=".main.tartozas.FunctionDebt">
 
                 <com.google.android.material.appbar.AppBarLayout
                     android:id="@+id/appBarLayout"

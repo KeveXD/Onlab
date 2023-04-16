@@ -1,4 +1,4 @@
-package hu.bme.aut.android.proba3.tartozas.detailes
+package hu.bme.aut.android.proba3.main.tartozas.detailes
 
 import android.os.Bundle
 import android.widget.Button
@@ -6,16 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import hu.bme.aut.android.proba3.R
-import hu.bme.aut.android.proba3.databinding.ActivityTartozasBinding
 import hu.bme.aut.android.proba3.databinding.DetailesDebtBinding
-import hu.bme.aut.android.proba3.tartozas.AdapterDebt
 
-import hu.bme.aut.android.proba3.tartozas.FragmentDebt
-import hu.bme.aut.android.proba3.tartozas.ViewModelDebt
-import hu.bme.aut.android.proba3.tartozas.data.DatabaseDebt
-import hu.bme.aut.android.proba3.tartozas.data.DebtItem
+import hu.bme.aut.android.proba3.main.tartozas.data.DatabaseDebt
+import hu.bme.aut.android.proba3.main.tartozas.data.DebtItem
 
 lateinit var viewModel: ViewModelDetails
 
