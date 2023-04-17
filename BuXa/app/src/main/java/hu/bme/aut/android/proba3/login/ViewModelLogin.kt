@@ -5,7 +5,7 @@ import android.view.View
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
 
-class LoginViewModel : ViewModel() {
+class ViewModelLogin : ViewModel() {
 
     var email: String?=null
     var password: String?=null

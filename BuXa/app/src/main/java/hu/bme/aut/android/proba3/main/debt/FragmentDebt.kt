@@ -1,4 +1,4 @@
-package hu.bme.aut.android.proba3.main.tartozas
+package hu.bme.aut.android.proba3.main.debt
 
 
 import android.app.Dialog
@@ -7,15 +7,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
-import hu.bme.aut.android.proba3.databinding.DialogUjTartozasBinding
-import hu.bme.aut.android.proba3.main.tartozas.data.DebtItem
+import hu.bme.aut.android.proba3.databinding.DialogDebtBinding
+import hu.bme.aut.android.proba3.main.debt.data.DebtItem
 
 
 class FragmentDebt : DialogFragment() {
 
     private lateinit var listener: FragmentInterface
 
-    private lateinit var binding: DialogUjTartozasBinding
+    private lateinit var binding: DialogDebtBinding
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -24,7 +24,7 @@ class FragmentDebt : DialogFragment() {
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        binding = DialogUjTartozasBinding.inflate(LayoutInflater.from(context))
+        binding = DialogDebtBinding.inflate(LayoutInflater.from(context))
 
 
         return AlertDialog.Builder(requireContext()).setTitle("Új tartozás hozzáadása").setView(binding.root)

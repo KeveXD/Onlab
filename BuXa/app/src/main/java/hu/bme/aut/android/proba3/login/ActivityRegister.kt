@@ -13,7 +13,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import hu.bme.aut.android.proba3.R
 
-class RegisterActivity : AppCompatActivity() {
+class ActivityRegister : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
 
 
@@ -45,7 +45,7 @@ class RegisterActivity : AppCompatActivity() {
             ?.addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    val intent = Intent(this, LoginActivity::class.java)
+                    val intent = Intent(this, ActivityLogin::class.java)
                     startActivity(intent)
 
                     Toast.makeText(baseContext, "Autentikáció sikeres regisztrációnál", Toast.LENGTH_SHORT).show()

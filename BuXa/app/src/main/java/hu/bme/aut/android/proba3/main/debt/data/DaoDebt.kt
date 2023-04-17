@@ -1,4 +1,4 @@
-package hu.bme.aut.android.proba3.main.tartozas.data
+package hu.bme.aut.android.proba3.main.debt.data
 
 
 import androidx.room.*

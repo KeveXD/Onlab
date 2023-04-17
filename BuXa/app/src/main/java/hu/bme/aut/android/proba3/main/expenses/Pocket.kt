@@ -1,15 +1,7 @@
-package hu.bme.aut.android.proba3.main.koltesek
+package hu.bme.aut.android.proba3.main.expenses
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
-import android.widget.ImageButton
-import androidx.databinding.DataBindingUtil
-import hu.bme.aut.android.proba3.R
-import hu.bme.aut.android.proba3.databinding.ActivityMenuBinding
-import hu.bme.aut.android.proba3.databinding.ActivityPocketBinding
-import hu.bme.aut.android.proba3.databinding.LoginBinding
 
 
 class Pocket : AppCompatActivity() {

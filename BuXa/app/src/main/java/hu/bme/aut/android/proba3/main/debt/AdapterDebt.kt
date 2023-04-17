@@ -1,10 +1,10 @@
-package hu.bme.aut.android.proba3.main.tartozas
+package hu.bme.aut.android.proba3.main.debt
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import hu.bme.aut.android.proba3.databinding.TartozasListaBinding
-import hu.bme.aut.android.proba3.main.tartozas.data.DebtItem
+import hu.bme.aut.android.proba3.databinding.DebtListitemBinding
+import hu.bme.aut.android.proba3.main.debt.data.DebtItem
 
 
 class AdapterDebt(private val listener: mainFigyeloInterface) :
@@ -13,7 +13,7 @@ class AdapterDebt(private val listener: mainFigyeloInterface) :
     private val payments = mutableListOf<DebtItem>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = SajatViewHolder(
-        TartozasListaBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        DebtListitemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
 
     override fun onBindViewHolder(holder: SajatViewHolder, position: Int) {
@@ -54,5 +54,5 @@ class AdapterDebt(private val listener: mainFigyeloInterface) :
         fun onItemDelete(item: DebtItem, position: Int)
     }
 
-    inner class SajatViewHolder(val binding: TartozasListaBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class SajatViewHolder(val binding: DebtListitemBinding) : RecyclerView.ViewHolder(binding.root)
 }

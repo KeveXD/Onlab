@@ -1,12 +1,11 @@
-package hu.bme.aut.android.proba3.main.tartozas.detailes
+package hu.bme.aut.android.proba3.main.debt.details
 
-import android.annotation.SuppressLint
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import hu.bme.aut.android.proba3.databinding.TartozasDetailesListaelemBinding
-import hu.bme.aut.android.proba3.main.tartozas.data.DebtItem
+import hu.bme.aut.android.proba3.databinding.DebtDetailsListitemBinding
+import hu.bme.aut.android.proba3.main.debt.data.DebtItem
 
 
 class AdapterDetails(private val listener: mainFigyeloInterface) :
@@ -15,7 +14,7 @@ class AdapterDetails(private val listener: mainFigyeloInterface) :
     val tartozasok = mutableListOf<DebtItem>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = SajatViewHolder(
-        TartozasDetailesListaelemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        DebtDetailsListitemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
 
 
@@ -59,5 +58,5 @@ class AdapterDetails(private val listener: mainFigyeloInterface) :
         fun onItemDelete(item: DebtItem, position: Int)
     }
 
-    inner class SajatViewHolder(val binding: TartozasDetailesListaelemBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class SajatViewHolder(val binding: DebtDetailsListitemBinding) : RecyclerView.ViewHolder(binding.root)
 }

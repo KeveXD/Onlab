@@ -7,7 +7,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="hu.bme.aut.android.proba3.login.LoginViewModel" />
+            type="hu.bme.aut.android.proba3.login.ViewModelLogin" />
     </data>
 
 
@@ -16,7 +16,7 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".login.RegisterActivity">
+        tools:context=".login.ActivityRegister">
 
 
         <RelativeLayout

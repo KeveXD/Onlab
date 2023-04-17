@@ -13,20 +13,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Material3.Dark"
         tools:targetApi="31">
-        <activity android:name=".main.koltesek.Pocket" />
-        <activity android:name="hu.bme.aut.android.proba3.main.tartozas.detailes.Detailes" />
-        <activity android:name="hu.bme.aut.android.proba3.main.tartozas.FunctionDebt" />
+        <activity android:name=".main.expenses.Pocket" />
+        <activity android:name="hu.bme.aut.android.proba3.main.debt.details.Detailes" />
+        <activity android:name="hu.bme.aut.android.proba3.main.debt.FunctionDebt" />
         <activity
             android:name=".main.MenuActivity"
             android:exported="false" />
         <activity
-            android:name=".login.LoginViewModel"
+            android:name=".login.ViewModelLogin"
             android:exported="false" />
         <activity
-            android:name=".login.RegisterActivity"
+            android:name=".login.ActivityRegister"
             android:exported="false" />
         <activity
-            android:name=".login.LoginActivity"
+            android:name=".login.ActivityLogin"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <intent-filter>

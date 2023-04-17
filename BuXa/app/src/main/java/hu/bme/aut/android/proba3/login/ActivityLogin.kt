@@ -8,28 +8,27 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
-import androidx.databinding.adapters.TextViewBindingAdapter.setText
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import hu.bme.aut.android.proba3.R
-import hu.bme.aut.android.proba3.databinding.LoginBinding
+import hu.bme.aut.android.proba3.databinding.ActivityLoginBinding
 import hu.bme.aut.android.proba3.main.MenuActivity
 
-class LoginActivity : AppCompatActivity(), LoginListener {
+class ActivityLogin : AppCompatActivity(), LoginListener {
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val binding: LoginBinding = DataBindingUtil.setContentView(this, R.layout.login)
-        val viewModel= ViewModelProvider(this).get(LoginViewModel::class.java)
+        val binding: ActivityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login)
+        val viewModel= ViewModelProvider(this).get(ViewModelLogin::class.java)
         val registerText: TextView=findViewById(R.id.text_register)
         val SignInButton: Button =findViewById(R.id.button_sign_in)
 
         registerText.setOnClickListener{
-            val intent = Intent(this, RegisterActivity::class.java)
+            val intent = Intent(this, ActivityRegister::class.java)
             startActivity(intent)
         }
 

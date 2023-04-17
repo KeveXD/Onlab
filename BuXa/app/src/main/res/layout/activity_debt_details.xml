@@ -8,13 +8,13 @@
     <data>
         <variable
             name="viewmodel"
-            type="hu.bme.aut.android.proba3.main.tartozas.detailes.ViewModelDetails" />
+            type="hu.bme.aut.android.proba3.main.debt.details.ViewModelDetails" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".main.tartozas.FunctionDebt">
+        tools:context=".main.debt.FunctionDebt">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
@@ -35,7 +35,7 @@
             android:background="#3C4787"
             app:layout_anchor="@+id/rvMain"
             app:layout_anchorGravity="center"
-            tools:listitem="@layout/tartozas_detailes_listaelem"
+            tools:listitem="@layout/debt_details_listitem"
             app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
             app:layout_constraintBottom_toTopOf="@+id/bSzamol"
             app:layout_constraintStart_toStartOf="parent"

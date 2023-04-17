@@ -1,4 +1,4 @@
-package hu.bme.aut.android.proba3.main.tartozas.detailes
+package hu.bme.aut.android.proba3.main.debt.details
 
 import android.os.Bundle
 import android.widget.Button
@@ -7,10 +7,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import hu.bme.aut.android.proba3.R
-import hu.bme.aut.android.proba3.databinding.DetailesDebtBinding
+import hu.bme.aut.android.proba3.databinding.ActivityDebtDetailsBinding
 
-import hu.bme.aut.android.proba3.main.tartozas.data.DatabaseDebt
-import hu.bme.aut.android.proba3.main.tartozas.data.DebtItem
+import hu.bme.aut.android.proba3.main.debt.data.DatabaseDebt
+import hu.bme.aut.android.proba3.main.debt.data.DebtItem
 
 lateinit var viewModel: ViewModelDetails
 
@@ -20,7 +20,7 @@ class Detailes : AppCompatActivity(), AdapterDetails.mainFigyeloInterface,ViewMo
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel= ViewModelProvider(this).get(ViewModelDetails::class.java)
-        val binding: DetailesDebtBinding = DataBindingUtil.setContentView(this, R.layout.detailes_debt)
+        val binding: ActivityDebtDetailsBinding = DataBindingUtil.setContentView(this, R.layout.activity_debt_details)
         val adapter: AdapterDetails = AdapterDetails(this)
         val database: DatabaseDebt=DatabaseDebt.getDatabase(applicationContext)
 

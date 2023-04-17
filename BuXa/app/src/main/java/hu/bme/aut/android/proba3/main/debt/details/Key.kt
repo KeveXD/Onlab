@@ -1,6 +1,6 @@
-package hu.bme.aut.android.proba3.main.tartozas.detailes
+package hu.bme.aut.android.proba3.main.debt.details
 
-class Kulcs(ujNev: String) {
+class Key(ujNev: String) {
     public  var nev: String=ujNev
     public  var ennyiEmbernekTartozik: Int=0
     //osszesen ennyivel tartozik

@@ -1,4 +1,4 @@
-package hu.bme.aut.android.proba3.main.tartozas
+package hu.bme.aut.android.proba3.main.debt
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -9,10 +9,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import hu.bme.aut.android.proba3.R
-import hu.bme.aut.android.proba3.databinding.ActivityTartozasBinding
-import hu.bme.aut.android.proba3.main.tartozas.data.DatabaseDebt
-import hu.bme.aut.android.proba3.main.tartozas.data.DebtItem
-import hu.bme.aut.android.proba3.main.tartozas.detailes.Detailes
+import hu.bme.aut.android.proba3.databinding.ActivityDebtBinding
+import hu.bme.aut.android.proba3.main.debt.data.DatabaseDebt
+import hu.bme.aut.android.proba3.main.debt.data.DebtItem
+import hu.bme.aut.android.proba3.main.debt.details.Detailes
 
 lateinit var viewModel: ViewModelDebt
 class FunctionDebt : AppCompatActivity(), AdapterDebt.mainFigyeloInterface,
@@ -20,7 +20,7 @@ class FunctionDebt : AppCompatActivity(), AdapterDebt.mainFigyeloInterface,
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel= ViewModelProvider(this).get(ViewModelDebt::class.java)
-        val binding: ActivityTartozasBinding = DataBindingUtil.setContentView(this, R.layout.activity_tartozas)
+        val binding: ActivityDebtBinding = DataBindingUtil.setContentView(this, R.layout.activity_debt)
         val adapter: AdapterDebt=AdapterDebt(this)
         val database: DatabaseDebt=DatabaseDebt.getDatabase(applicationContext)
         val plusz: FloatingActionButton =findViewById(R.id.plusz_gomb)

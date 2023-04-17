@@ -1,11 +1,11 @@
-package hu.bme.aut.android.proba3.main.tartozas.detailes
+package hu.bme.aut.android.proba3.main.debt.details
 
 import android.app.Activity
 import android.content.Context
 import androidx.lifecycle.ViewModel
 
-import hu.bme.aut.android.proba3.main.tartozas.data.DatabaseDebt
-import hu.bme.aut.android.proba3.main.tartozas.data.DebtItem
+import hu.bme.aut.android.proba3.main.debt.data.DatabaseDebt
+import hu.bme.aut.android.proba3.main.debt.data.DebtItem
 import kotlin.concurrent.thread
 
 
@@ -17,7 +17,7 @@ class ViewModelDetails(): ViewModel() {
 
     lateinit var context: Context
 
-    private val kulcsok = mutableListOf<Kulcs>()
+    private val kulcsok = mutableListOf<Key>()
 
 
     fun loadItemsInBackground() {
@@ -42,8 +42,8 @@ class ViewModelDetails(): ViewModel() {
         adapter.tartozasok.filterNot { it.isPayed }.forEach { l ->
             val bWhom = kulcsok.none { it.nev == l.whom }
             val bWho = kulcsok.none { it.nev == l.who || l.who == l.whom }
-            if (bWho) kulcsok.add(Kulcs(l.who))
-            if (bWhom) kulcsok.add(Kulcs(l.whom))
+            if (bWho) kulcsok.add(Key(l.who))
+            if (bWhom) kulcsok.add(Key(l.whom))
         }
         adapter.tartozasok.filterNot { it.isPayed }.forEach { l ->
             kulcsok.filter { it.nev == l.who }.forEach { it.osszesen -= l.amount }
