@@ -36,7 +36,7 @@ class Detailes : AppCompatActivity(), AdapterDetails.mainFigyeloInterface,ViewMo
 
             viewModel.initKulcsok()
             viewModel.szamol()
-            println("Tomb elemszama: %d".format(adapter.tartozasok.size))
+            //println("Tomb elemszama: %d".format(adapter.tartozasok.size))
             viewModel.updateItems()
 
         }

@@ -18,8 +18,9 @@ class AdapterDetails(private val listener: mainFigyeloInterface) :
         TartozasDetailesListaelemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
 
-    //ez mi??
-    @SuppressLint("SetTextI18n")
+
+
+
     override fun onBindViewHolder(holder: SajatViewHolder, position: Int) {
         val p = tartozasok[position]
 
