@@ -7,16 +7,16 @@ import hu.bme.aut.android.proba3.databinding.DebtListitemBinding
 import hu.bme.aut.android.proba3.main.debt.data.DebtItem
 
 
-class AdapterDebt(private val listener: mainFigyeloInterface) :
-    RecyclerView.Adapter<AdapterDebt.SajatViewHolder>() {
+class AdapterDebt(private val listener: AdapterInterface) :
+    RecyclerView.Adapter<AdapterDebt.DeptListitemViewHolder>() {
 
     private val payments = mutableListOf<DebtItem>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = SajatViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = DeptListitemViewHolder(
         DebtListitemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
 
-    override fun onBindViewHolder(holder: SajatViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: DeptListitemViewHolder, position: Int) {
         val p = payments[position]
 
         holder.binding.tvWho.text = p.who
@@ -49,10 +49,10 @@ class AdapterDebt(private val listener: mainFigyeloInterface) :
         notifyDataSetChanged()
     }
 
-    interface mainFigyeloInterface {
-        //fun onItemChanged(item: DebtItem)
+    interface AdapterInterface {
+        //azert krll mert a viewModel majd kitorli az adatbazisbol
         fun onItemDelete(item: DebtItem, position: Int)
     }
 
-    inner class SajatViewHolder(val binding: DebtListitemBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class DeptListitemViewHolder(val binding: DebtListitemBinding) : RecyclerView.ViewHolder(binding.root)
 }

@@ -40,6 +40,25 @@ class ActivityLogin : AppCompatActivity(), LoginListener {
         viewModel.auth=auth
         viewModel.activity=this
 
+        binding.viewmodel = viewModel.apply {
+            email = "arpi@gmail.com"
+            password = "Arpi123"
+        }
+
+        viewModel.listener = this
+        auth = Firebase.auth
+        viewModel.auth = auth
+        viewModel.activity = this
+
+        binding.editTextEmail.addTextChangedListener {
+            viewModel.email = it.toString()
+        }
+
+        binding.editTextPassword.addTextChangedListener {
+            viewModel.password = it.toString()
+        }
+
+
         binding.editTextEmail.addTextChangedListener {
             viewModel.email = it.toString()
         }

@@ -7,7 +7,7 @@ import android.widget.ImageButton
 import androidx.databinding.DataBindingUtil
 import hu.bme.aut.android.proba3.R
 import hu.bme.aut.android.proba3.databinding.ActivityMenuBinding
-import hu.bme.aut.android.proba3.main.expenses.Pocket
+import hu.bme.aut.android.proba3.main.expenses.ActivityPocket
 import hu.bme.aut.android.proba3.main.debt.FunctionDebt
 
 class MenuActivity : AppCompatActivity() {
@@ -23,7 +23,7 @@ class MenuActivity : AppCompatActivity() {
             startActivity(intent)
         }
         koltesekGomb.setOnClickListener{
-            val intent = Intent(this, Pocket::class.java)
+            val intent = Intent(this, ActivityPocket::class.java)
             startActivity(intent)
         }
 

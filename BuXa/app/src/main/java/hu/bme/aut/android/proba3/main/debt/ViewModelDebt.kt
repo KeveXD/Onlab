@@ -15,6 +15,7 @@ class ViewModelDebt: ViewModel() {
     lateinit var context: Context
 
 
+    //kitorli az adatbazisbol a megfelelo elemet
     fun onItemDelete(item: DebtItem, position: Int) {
         thread {
             database.DatabaseDebtFun().deleteItem(item)
@@ -24,6 +25,7 @@ class ViewModelDebt: ViewModel() {
         }
     }
 
+    //adatbazisba menti az uj DebtItem-et
     fun newPaymentCreated(newItem: DebtItem) {
         thread {
             val insertId = database.DatabaseDebtFun().insert(newItem)

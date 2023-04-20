@@ -15,7 +15,7 @@ import hu.bme.aut.android.proba3.main.debt.data.DebtItem
 import hu.bme.aut.android.proba3.main.debt.details.Detailes
 
 lateinit var viewModel: ViewModelDebt
-class FunctionDebt : AppCompatActivity(), AdapterDebt.mainFigyeloInterface,
+class FunctionDebt : AppCompatActivity(), AdapterDebt.AdapterInterface,
     FragmentDebt.FragmentInterface, ViewModelDebt.mainFigyelo {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,6 +59,7 @@ class FunctionDebt : AppCompatActivity(), AdapterDebt.mainFigyeloInterface,
     }
 
     //FragmentDebt interface-ben van
+    //az OK gomb lenyomásánál ez hívódik meg
     override fun newPaymentCreated(newItem: DebtItem) {
         viewModel.newPaymentCreated(newItem)
     }

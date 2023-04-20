@@ -17,6 +17,7 @@ class FragmentDebt : DialogFragment() {
 
     private lateinit var binding: DialogDebtBinding
 
+    //Activity-hez csatolja a dialógust
     override fun onAttach(context: Context) {
         super.onAttach(context)
         listener = context as? FragmentInterface
