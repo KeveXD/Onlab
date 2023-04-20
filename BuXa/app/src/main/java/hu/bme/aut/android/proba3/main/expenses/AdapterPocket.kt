@@ -4,9 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import hu.bme.aut.android.proba3.databinding.PocketListitemBinding
+import hu.bme.aut.android.proba3.main.debt.AdapterDebt
+import hu.bme.aut.android.proba3.main.debt.data.DebtItem
 
 
-class AdapterPocket() :
+class AdapterPocket(private val listener: AdapterPocket.AdapterInterface) :
     RecyclerView.Adapter<AdapterPocket.ViewHolder>() {
 
     private val pockets = mutableListOf<String>()
@@ -18,6 +20,10 @@ class AdapterPocket() :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val p = pockets[position]
         holder.binding.myTextView.text=p.toString()
+
+        holder.binding.myImageButton.setOnClickListener{
+            listener.activityCall(holder.binding.myTextView.text.toString())
+        }
     }
 
     override fun getItemCount(): Int = pockets.size
@@ -27,6 +33,10 @@ class AdapterPocket() :
         pockets.add(name)
 
         notifyItemInserted(pockets.size - 1)
+    }
+
+    interface AdapterInterface {
+        fun activityCall(name: String)
     }
 
 
