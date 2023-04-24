@@ -4,6 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="viewmodel"
+            type="hu.bme.aut.android.proba3.main.expenses.inPocket.ViewModelInPocket" />
+    </data>
+
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -66,8 +72,10 @@
             app:layout_anchorGravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+            app:layout_constraintVertical_bias="0.497"
             tools:ignore="NotSibling"
             tools:listitem="@layout/inpocket_listitem" />
 

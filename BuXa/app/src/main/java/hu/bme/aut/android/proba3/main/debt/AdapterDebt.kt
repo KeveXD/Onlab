@@ -50,7 +50,7 @@ class AdapterDebt(private val listener: AdapterInterface) :
     }
 
     interface AdapterInterface {
-        //azert krll mert a viewModel majd kitorli az adatbazisbol
+        //azert kell mert a viewModel majd kitorli az adatbazisbol
         fun onItemDelete(item: DebtItem, position: Int)
     }
 

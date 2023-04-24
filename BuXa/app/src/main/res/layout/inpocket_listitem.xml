@@ -17,34 +17,34 @@
         android:padding="0dp">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="78dp"
+            android:layout_height="match_parent"
             android:textColor="#0C350D"
             android:textStyle="bold"
             android:typeface="monospace"
             app:fontFamily="casual"
-            android:textSize="20sp"
+            android:textSize="14sp"
             android:text="Dátum"/>
 
         <TextView
-            android:layout_width="75dp"
+            android:layout_width="56dp"
             android:layout_height="match_parent"
             android:text="Összeg"
             android:textColor="#F15E53"
-            android:textSize="20sp"
+            android:textSize="14sp"
             android:textStyle="bold"
             android:typeface="monospace"
             app:fontFamily="casual" />
 
         <TextView
-            android:layout_width="100dp"
+            android:layout_width="65dp"
             android:layout_height="wrap_content"
 
             android:textColor="#F15E53"
             android:textStyle="bold"
             android:typeface="monospace"
             app:fontFamily="casual"
-            android:textSize="20sp"
+            android:textSize="14sp"
             android:text="Honnan"/>
 
         <TextView
@@ -74,14 +74,14 @@
 
         <TextView
             android:id="@+id/tvAmount"
-            android:layout_width="64dp"
+            android:layout_width="46dp"
             android:layout_height="64dp"
             android:layout_marginLeft="3dp"
             android:text="4500"
             />
         <TextView
             android:id="@+id/tvFrom"
-            android:layout_width="64dp"
+            android:layout_width="50dp"
             android:layout_height="64dp"
             android:layout_marginLeft="11dp"
             android:text="Kondi"
