@@ -103,7 +103,7 @@
         android:layout_height="50dp"
         android:layout_gravity="center_vertical"
         android:scaleType="fitXY"
-        android:src="@drawable/kuka"
+        android:src="@drawable/cerka"
         />
     </LinearLayout>
 </LinearLayout>

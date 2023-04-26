@@ -11,7 +11,7 @@ import hu.bme.aut.android.proba3.main.debt.data.DaoDebt
 
 
 @Database(entities = [ExpensItem::class], version = 1)
-
+//repo
 abstract class DatabaseExpenses : RoomDatabase() {
     abstract fun DatabaseExpensesFun(): DaoExpenses
 

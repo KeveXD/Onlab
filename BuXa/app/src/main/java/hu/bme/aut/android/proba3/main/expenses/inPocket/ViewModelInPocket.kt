@@ -11,7 +11,7 @@ import hu.bme.aut.android.proba3.main.expenses.data.ExpensItem
 import kotlin.concurrent.thread
 
 
-
+//observabledata,livedata
 class ViewModelInPocket: ViewModel() {
     lateinit var database: DatabaseExpenses
     lateinit var adapter: AdapterInPocket
@@ -47,6 +47,17 @@ class ViewModelInPocket: ViewModel() {
                 adapter.update(items)
             }
         }
+
+    }
+
+    fun calculateSum(): Int{
+        var totalTvAmount = 0
+        for(i in adapter.payments)
+        {
+            totalTvAmount+=i.amount
+        }
+
+        return totalTvAmount
     }
 
     interface mainFigyelo{

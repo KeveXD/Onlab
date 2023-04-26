@@ -18,18 +18,24 @@ import hu.bme.aut.android.proba3.main.expenses.data.DatabaseExpenses
 import hu.bme.aut.android.proba3.main.expenses.data.ExpensItem
 
 lateinit var viewModelExpenses: ViewModelInPocket
+lateinit var binding: ActivityInpocketBinding
 class ActivityInPocket : AppCompatActivity(), AdapterInPocket.AdapterInterface,
-ViewModelInPocket.mainFigyelo,FragmentExpenses.FragmentInterface{
+    ViewModelInPocket.mainFigyelo, FragmentExpenses.FragmentInterface, FragmentExpensesModify.FragmentInterface2 {
+
+    private lateinit var viewModelExpenses: ViewModelInPocket
+    private lateinit var adapter: AdapterInPocket // adapter létrehozása
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding: ActivityInpocketBinding = DataBindingUtil.setContentView(this, R.layout.activity_inpocket)
-        viewModelExpenses= ViewModelProvider(this).get(ViewModelInPocket::class.java)
-        val adapter: AdapterInPocket = AdapterInPocket(this)
+        binding= DataBindingUtil.setContentView(this, R.layout.activity_inpocket)
         val database: DatabaseExpenses = DatabaseExpenses.getDatabase(applicationContext)
         val plusz: FloatingActionButton =findViewById(R.id.plusz_gomb)
 
-        //init viewModelExpenses
-        binding.viewmodel=viewModelExpenses
+        // Adapter létrehozása és inicializálása
+        adapter = AdapterInPocket(this)
+
+        // ViewModel inicializálása
+        viewModelExpenses= ViewModelProvider(this).get(ViewModelInPocket::class.java)
         viewModelExpenses.adapter=adapter
         viewModelExpenses.database=database
         viewModelExpenses.context=this
@@ -50,9 +56,9 @@ ViewModelInPocket.mainFigyelo,FragmentExpenses.FragmentInterface{
         binding.rvMain.layoutManager = LinearLayoutManager(this)
         binding.rvMain.adapter = adapter
         viewModelExpenses.loadItemsInBackground()
+
+
     }
-
-
 
     override fun newPaymentCreated(newItem: ExpensItem) {
         viewModelExpenses.newPaymentCreated(newItem)
@@ -62,4 +68,17 @@ ViewModelInPocket.mainFigyelo,FragmentExpenses.FragmentInterface{
         viewModelExpenses.onItemDelete(item,position)
     }
 
+    override fun sum(p: Int) {
+        binding.tvAmount.text=p.toString()
+    }
+
+    override fun openFragmentModify(item: ExpensItem) {
+        FragmentExpensesModify(item).show(
+            supportFragmentManager,
+            "PaymentFragment"
+        )
+    }
 }
+
+
+

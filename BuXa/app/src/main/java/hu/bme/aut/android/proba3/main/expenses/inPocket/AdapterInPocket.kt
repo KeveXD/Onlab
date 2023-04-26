@@ -12,7 +12,7 @@ import hu.bme.aut.android.proba3.main.expenses.data.ExpensItem
 class AdapterInPocket(private val listener: AdapterInterface) :
     RecyclerView.Adapter<AdapterInPocket.ExpensesListitemViewHolder>() {
 
-    private val payments = mutableListOf<ExpensItem>()
+    val payments = mutableListOf<ExpensItem>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ExpensesListitemViewHolder(
         InpocketListitemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -30,32 +30,50 @@ class AdapterInPocket(private val listener: AdapterInterface) :
 
         //a kuka gomb megnyomasakor meghivjuk a torles fuggvenyt a helyi interfacen
         holder.binding.ibEdit.setOnClickListener(){
+            listener.openFragmentModify(payments[position])
             listener.onItemDelete(p,position)
         }
     }
 
     override fun getItemCount(): Int = payments.size
 
+    fun calculateSum(): Int{
+        var totalTvAmount = 0
+        println("NAAA")
+        for(i in payments)
+        {
+            totalTvAmount+=i.amount
+            println("osszeg: ${i.amount}")
+        }
+
+        return totalTvAmount
+    }
+
 
     fun addItem(item: ExpensItem) {
         payments.add(item)
         notifyItemInserted(payments.size - 1)
+        listener.sum(calculateSum())
     }
 
     fun update(newPayments: List<ExpensItem>) {
         payments.clear()
         payments.addAll(newPayments)
         notifyDataSetChanged()
+        listener.sum(calculateSum())
     }
 
     fun delete(position: Int){
         payments.removeAt(position)
         notifyDataSetChanged()
+        listener.sum(calculateSum())
     }
 
     interface AdapterInterface {
         //azert kell mert a viewModel majd kitorli az adatbazisbol
         fun onItemDelete(item: ExpensItem, position: Int)
+        fun sum(p: Int)
+        fun openFragmentModify(item: ExpensItem)
     }
 
     inner class ExpensesListitemViewHolder(val binding: InpocketListitemBinding) : RecyclerView.ViewHolder(binding.root)
