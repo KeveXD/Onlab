@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import hu.bme.aut.android.proba3.databinding.PocketListitemBinding
 import hu.bme.aut.android.proba3.main.debt.AdapterDebt
 import hu.bme.aut.android.proba3.main.debt.data.DebtItem
+import hu.bme.aut.android.proba3.main.expenses.data.ExpensItem
 
 
 class AdapterPocket(private val listener: AdapterPocket.AdapterInterface) :
@@ -31,9 +32,16 @@ class AdapterPocket(private val listener: AdapterPocket.AdapterInterface) :
 
     fun addItem(name: String) {
         pockets.add(name)
-
         notifyItemInserted(pockets.size - 1)
     }
+
+    fun update(newPockets: List<String>) {
+        pockets.clear()
+        pockets.addAll(newPockets)
+        notifyDataSetChanged()
+    }
+
+
 
     interface AdapterInterface {
         fun activityCall(name: String)

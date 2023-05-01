@@ -9,7 +9,7 @@ import hu.bme.aut.android.proba3.main.debt.data.DebtItem
 import hu.bme.aut.android.proba3.main.expenses.data.ExpensItem
 
 
-class AdapterInPocket(private val listener: AdapterInterface) :
+class AdapterInPocket(private val pocketName: String?, private val listener: AdapterInterface) :
     RecyclerView.Adapter<AdapterInPocket.ExpensesListitemViewHolder>() {
 
     val payments = mutableListOf<ExpensItem>()
@@ -23,9 +23,8 @@ class AdapterInPocket(private val listener: AdapterInterface) :
 
         holder.binding.tvDate.text=p.date
         holder.binding.tvFrom.text=p.spentFor
-        holder.binding.tvNotes.text=p.description
+        holder.binding.tvNotes.text=p.pocket
         holder.binding.tvAmount.text = "${p.amount} Ft"
-
 
 
         //a kuka gomb megnyomasakor meghivjuk a torles fuggvenyt a helyi interfacen
@@ -39,18 +38,19 @@ class AdapterInPocket(private val listener: AdapterInterface) :
 
     fun calculateSum(): Int{
         var totalTvAmount = 0
-        println("NAAA")
         for(i in payments)
         {
             totalTvAmount+=i.amount
-            println("osszeg: ${i.amount}")
         }
-
         return totalTvAmount
     }
 
 
     fun addItem(item: ExpensItem) {
+        if (pocketName==null)
+            item.pocket="Lajos"
+        else
+        item.pocket=pocketName
         payments.add(item)
         notifyItemInserted(payments.size - 1)
         listener.sum(calculateSum())

@@ -15,6 +15,7 @@ import kotlin.concurrent.thread
 class ViewModelInPocket: ViewModel() {
     lateinit var database: DatabaseExpenses
     lateinit var adapter: AdapterInPocket
+    var pocketName: String?=null
     //runOnUiThread miatt kell
     lateinit var context: Context
 
@@ -42,13 +43,13 @@ class ViewModelInPocket: ViewModel() {
 
     fun loadItemsInBackground() {
         thread {
-            val items = database.DatabaseExpensesFun().getAll()
+            val items = database.DatabaseExpensesFun().getAll().filter { it.pocket == pocketName }
             (context as Activity).runOnUiThread {
                 adapter.update(items)
             }
         }
-
     }
+
 
     fun calculateSum(): Int{
         var totalTvAmount = 0

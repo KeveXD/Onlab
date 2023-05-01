@@ -1,55 +1,69 @@
-package hu.bme.aut.android.proba3.main.expenses.inPocket
-
-
+import android.app.DatePickerDialog
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.widget.DatePicker
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.DialogFragment
-import hu.bme.aut.android.proba3.databinding.DialogDebtBinding
 import hu.bme.aut.android.proba3.databinding.DialogExpensesBinding
-import hu.bme.aut.android.proba3.main.debt.data.DebtItem
 import hu.bme.aut.android.proba3.main.expenses.data.ExpensItem
+import java.text.SimpleDateFormat
+import java.util.*
 
-
-class FragmentExpenses : DialogFragment() {
+class FragmentExpenses(private val pocketName: String?) : DialogFragment(),
+    DatePickerDialog.OnDateSetListener {
 
     private lateinit var listener: FragmentInterface
-
     private lateinit var binding: DialogExpensesBinding
+    private val calendar: Calendar = Calendar.getInstance()
 
-    //Activity-hez csatolja a dialógust
     override fun onAttach(context: Context) {
         super.onAttach(context)
         listener = context as? FragmentInterface
-            ?: throw RuntimeException("Activity must implement the DialogInterface interface!")
+            ?: throw RuntimeException("Activity must implement the FragmentInterface interface!")
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         binding = DialogExpensesBinding.inflate(LayoutInflater.from(context))
 
+        binding.etDate.setOnClickListener {
+            val datePickerDialog = DatePickerDialog(
+                requireContext(), this,
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH)
+            )
+            datePickerDialog.show()
+        }
 
-        return AlertDialog.Builder(requireContext()).setTitle("Új tartozás hozzáadása").setView(binding.root)
-            .setPositiveButton("OK") {
-                    dialogInterface, i -> listener.newPaymentCreated(getItem())
-            }.setNegativeButton("Mégsem", null).create()
+        return AlertDialog.Builder(requireContext())
+            .setTitle("Új tartozás hozzáadása")
+            .setView(binding.root)
+            .setPositiveButton("OK") { _, _ ->
+                listener.newPaymentCreated(getItem())
+            }
+            .setNegativeButton("Mégsem", null)
+            .create()
     }
 
-    private fun isValid(): Boolean
-    {
-        if (binding.etAmount.text.isNotEmpty())
-            return true
-        return false
+    override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
+        calendar.set(year, month, dayOfMonth)
+        val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        binding.etDate.setText(dateFormat.format(calendar.time))
     }
 
-    private fun getItem() = ExpensItem(
-        pocket="Lajos",
-        date = binding.etDate.text.toString(),
-        amount = binding.etAmount.text.toString().toIntOrNull() ?: 0,
-        spentFor=binding.etFrom.text.toString(),
-        description = binding.etDescription.text.toString()
-    )
+    private fun getItem(): ExpensItem {
+        val pocket2: String = pocketName ?: "Béla"
+        return ExpensItem(
+            pocket = pocket2,
+            date = binding.etDate.text.toString(),
+            amount = binding.etAmount.text.toString().toIntOrNull() ?: 0,
+            spentFor = binding.etFrom.text.toString(),
+            description = binding.etDescription.text.toString()
+        )
+    }
 
     interface FragmentInterface {
         fun newPaymentCreated(newItem: ExpensItem)

@@ -1,5 +1,6 @@
 package hu.bme.aut.android.proba3.main.expenses.inPocket
 
+import FragmentExpenses
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
@@ -23,7 +24,9 @@ class ActivityInPocket : AppCompatActivity(), AdapterInPocket.AdapterInterface,
     ViewModelInPocket.mainFigyelo, FragmentExpenses.FragmentInterface, FragmentExpensesModify.FragmentInterface2 {
 
     private lateinit var viewModelExpenses: ViewModelInPocket
-    private lateinit var adapter: AdapterInPocket // adapter létrehozása
+    private lateinit var adapter: AdapterInPocket
+    private var name: String? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,31 +34,36 @@ class ActivityInPocket : AppCompatActivity(), AdapterInPocket.AdapterInterface,
         val database: DatabaseExpenses = DatabaseExpenses.getDatabase(applicationContext)
         val plusz: FloatingActionButton =findViewById(R.id.plusz_gomb)
 
+        //A pocket nevet veszi at
+        name = intent.getStringExtra("name2")
+        binding.tvPocket.text=name.toString()
+
         // Adapter létrehozása és inicializálása
-        adapter = AdapterInPocket(this)
+        adapter = AdapterInPocket(name,this)
 
         // ViewModel inicializálása
         viewModelExpenses= ViewModelProvider(this).get(ViewModelInPocket::class.java)
         viewModelExpenses.adapter=adapter
         viewModelExpenses.database=database
         viewModelExpenses.context=this
+        viewModelExpenses.pocketName=name
 
-        //megnyit egy fragmentet
+        //pluszGomb megnyit egy fragmentet
         plusz.setOnClickListener{
-            FragmentExpenses().show(
+            FragmentExpenses(name).show(
                 supportFragmentManager,
                 "PaymentFragment"
             )
         }
 
-        //A pocket nevet veszi at
-        val name = intent.getStringExtra("name2")
-        binding.tvPocket.text=name.toString()
+
 
         //Init RecicleView
         binding.rvMain.layoutManager = LinearLayoutManager(this)
         binding.rvMain.adapter = adapter
         viewModelExpenses.loadItemsInBackground()
+
+
 
 
     }
@@ -73,12 +81,11 @@ class ActivityInPocket : AppCompatActivity(), AdapterInPocket.AdapterInterface,
     }
 
     override fun openFragmentModify(item: ExpensItem) {
-        FragmentExpensesModify(item).show(
+        FragmentExpensesModify(item,name).show(
             supportFragmentManager,
             "PaymentFragment"
         )
     }
+
+
 }
-
-
-
