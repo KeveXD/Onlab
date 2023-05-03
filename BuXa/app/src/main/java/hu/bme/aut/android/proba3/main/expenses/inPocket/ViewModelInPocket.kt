@@ -58,7 +58,7 @@ class ViewModelInPocket: ViewModel() {
         return totalTvAmount
     }
 
-    interface mainFigyelo{
+    interface mainObserver{
 
     }
 

@@ -15,7 +15,7 @@ import hu.bme.aut.android.proba3.main.expenses.data.ExpensItem
 lateinit var viewModelExpenses: ViewModelInPocket
 lateinit var binding: ActivityInpocketBinding
 class ActivityInPocket : AppCompatActivity(), AdapterInPocket.AdapterInterface,
-    ViewModelInPocket.mainFigyelo, FragmentExpenses.FragmentInterface, FragmentExpensesModify.FragmentInterface2 {
+    ViewModelInPocket.mainObserver, FragmentExpenses.FragmentInterface, FragmentExpensesModify.FragmentInterface2 {
 
     private lateinit var viewModelExpenses: ViewModelInPocket
     private lateinit var adapter: AdapterInPocket
@@ -32,17 +32,17 @@ class ActivityInPocket : AppCompatActivity(), AdapterInPocket.AdapterInterface,
         name = intent.getStringExtra("name2")
         binding.tvPocket.text=name.toString()
 
-        // Adapter létrehozása és inicializálása
+        // Init Adapter
         adapter = AdapterInPocket(name,this)
 
-        // ViewModel inicializálása
+        // Init ViewModel
         viewModelExpenses= ViewModelProvider(this).get(ViewModelInPocket::class.java)
         viewModelExpenses.adapter=adapter
         viewModelExpenses.database=database
         viewModelExpenses.context=this
         viewModelExpenses.pocketName=name
 
-        //pluszGomb megnyit egy fragmentet
+        //pluszGomb
         plusz.setOnClickListener{
             FragmentExpenses(name).show(
                 supportFragmentManager,
@@ -54,7 +54,7 @@ class ActivityInPocket : AppCompatActivity(), AdapterInPocket.AdapterInterface,
         binding.rvMain.layoutManager = LinearLayoutManager(this)
         binding.rvMain.adapter = adapter
         viewModelExpenses.loadItemsInBackground()
-        
+
     }
 
     override fun newPaymentCreated(newItem: ExpensItem) {

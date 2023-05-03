@@ -23,7 +23,7 @@ class AdapterInPocket(private val pocketName: String?, private val listener: Ada
 
         holder.binding.tvDate.text=p.date
         holder.binding.tvFrom.text=p.spentFor
-        holder.binding.tvNotes.text=p.pocket
+        holder.binding.tvNotes.text=p.description
         holder.binding.tvAmount.text = "${p.amount} Ft"
 
 
@@ -48,7 +48,7 @@ class AdapterInPocket(private val pocketName: String?, private val listener: Ada
 
     fun addItem(item: ExpensItem) {
         if (pocketName==null)
-            item.pocket="Lajos"
+            item.pocket="Összes"
         else
         item.pocket=pocketName
         payments.add(item)
