@@ -19,8 +19,8 @@ class ActivityInPocket : AppCompatActivity(), AdapterInPocket.AdapterInterface,
 
     private lateinit var viewModelExpenses: ViewModelInPocket
     private lateinit var adapter: AdapterInPocket
-    private var name: String? = null
-
+    private var pocketName: String? = null
+    private var callerName: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,22 +33,24 @@ class ActivityInPocket : AppCompatActivity(), AdapterInPocket.AdapterInterface,
         val plusz: FloatingActionButton =findViewById(R.id.plusz_gomb)
 
         //A pocket nevet veszi at
-        name = intent.getStringExtra("name2")
-        binding.tvPocket.text=name.toString()
+        pocketName = intent.getStringExtra("name2")
+
+        callerName = intent.getStringExtra("caller")
+        binding.tvPocket.text=pocketName.toString()
 
         // Init Adapter
-        adapter = AdapterInPocket(name,this)
+        adapter = AdapterInPocket(pocketName,this)
 
         // Init ViewModel
         viewModelExpenses= ViewModelProvider(this).get(ViewModelInPocket::class.java)
         viewModelExpenses.adapter=adapter
         viewModelExpenses.database=database
         viewModelExpenses.context=this
-        viewModelExpenses.pocketName=name
+        viewModelExpenses.pocketName=pocketName
 
         //pluszGomb
         plusz.setOnClickListener{
-            FragmentExpenses(name).show(
+            FragmentExpenses(pocketName,callerName).show(
                 supportFragmentManager,
                 "PaymentFragment"
             )
@@ -57,7 +59,9 @@ class ActivityInPocket : AppCompatActivity(), AdapterInPocket.AdapterInterface,
         //Init RecicleView
         binding.rvMain.layoutManager = LinearLayoutManager(this)
         binding.rvMain.adapter = adapter
+        viewModelExpenses.sortPaymentsByDate()
         viewModelExpenses.loadItemsInBackground()
+
 
     }
 
@@ -74,7 +78,7 @@ class ActivityInPocket : AppCompatActivity(), AdapterInPocket.AdapterInterface,
     }
 
     override fun openFragmentModify(item: ExpensItem) {
-        FragmentExpensesModify(item,name).show(
+        FragmentExpensesModify(item,pocketName,callerName).show(
             supportFragmentManager,
             "PaymentFragment"
         )

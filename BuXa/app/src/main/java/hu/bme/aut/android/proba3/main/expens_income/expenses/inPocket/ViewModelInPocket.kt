@@ -58,6 +58,12 @@ class ViewModelInPocket: ViewModel() {
         return totalTvAmount
     }
 
+    fun sortPaymentsByDate() {
+        adapter.payments.sortBy { payment -> payment.date }
+        adapter.notifyDataSetChanged()
+    }
+
+
     interface mainObserver{
 
     }

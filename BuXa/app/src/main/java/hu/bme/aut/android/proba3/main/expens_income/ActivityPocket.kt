@@ -71,19 +71,12 @@ class ActivityPocket : AppCompatActivity(), AdapterPocket.AdapterInterface {
         if (callerName.isNullOrEmpty()){
             return
         }
-        if (callerName=="expenses"){
             val intent = Intent()
-            intent.putExtra("caller", "income")
+            intent.putExtra("caller", callerName)
             intent.putExtra("name2", name)
             intent.setClass(this, ActivityInPocket::class.java)
             startActivity(intent)
-        }else if (callerName=="income"){
-            val intent = Intent()
-            intent.putExtra("caller", "income")
-            intent.putExtra("name2", name)
-            intent.setClass(this, ActivityInPocket::class.java)
-            startActivity(intent)
-        }
+
     }
 
 

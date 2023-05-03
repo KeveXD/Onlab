@@ -13,7 +13,9 @@ import hu.bme.aut.android.proba3.main.expens_income.data.ExpensItem
 import java.util.*
 
 
-class FragmentExpensesModify(private val expensItem: ExpensItem? = null,private val pocketName: String?) : DialogFragment(), DatePickerDialog.OnDateSetListener {
+class FragmentExpensesModify(private val expensItem: ExpensItem? = null,
+                             private val pocketName: String?,
+                             private val callerName: String?) : DialogFragment(), DatePickerDialog.OnDateSetListener {
 
     private var listener: FragmentInterface2? = null
 
@@ -65,18 +67,15 @@ class FragmentExpensesModify(private val expensItem: ExpensItem? = null,private 
     }
 
     private fun getItem(): ExpensItem{
-        var pocket2: String
-        if (pocketName==null)
-            pocket2="Béla"
-        else
-            pocket2=pocketName
+        val pocket2: String = pocketName ?: "Béla"
+        val caller: String = callerName ?: "expenses"
         return ExpensItem(
             pocket = pocket2,
             date = binding.etDate.text.toString(),
             amount = binding.etAmount.text.toString().toIntOrNull() ?: 0,
             spentFor=binding.etFrom.text.toString(),
             description = binding.etDescription.text.toString(),
-            expenseOrIncome = "expense"
+            expenseOrIncome = caller
         )
     }
 

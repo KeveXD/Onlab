@@ -11,7 +11,7 @@ import hu.bme.aut.android.proba3.main.expens_income.data.ExpensItem
 import java.text.SimpleDateFormat
 import java.util.*
 
-class FragmentExpenses(private val pocketName: String?) : DialogFragment(),
+class FragmentExpenses(private val pocketName: String?,private val callerName: String?) : DialogFragment(),
     DatePickerDialog.OnDateSetListener {
 
     private lateinit var listener: FragmentInterface
@@ -55,13 +55,14 @@ class FragmentExpenses(private val pocketName: String?) : DialogFragment(),
 
     private fun getItem(): ExpensItem {
         val pocket2: String = pocketName ?: "Béla"
+        val caller: String = callerName ?: "expenses"
         return ExpensItem(
             pocket = pocket2,
             date = binding.etDate.text.toString(),
             amount = binding.etAmount.text.toString().toIntOrNull() ?: 0,
             spentFor = binding.etFrom.text.toString(),
             description = binding.etDescription.text.toString(),
-            expenseOrIncome = "expense"
+            expenseOrIncome = caller
         )
     }
 
