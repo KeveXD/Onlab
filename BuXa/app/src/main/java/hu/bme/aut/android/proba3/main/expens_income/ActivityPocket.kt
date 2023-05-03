@@ -1,23 +1,33 @@
 package hu.bme.aut.android.proba3.main.expens_income
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
+import androidx.core.app.ActivityCompat
 import androidx.lifecycle.ViewModelProvider
+import hu.bme.aut.android.proba3.R
 import hu.bme.aut.android.proba3.databinding.ActivityPocketBinding
+import hu.bme.aut.android.proba3.main.expens_income.AdapterPocket.Companion.SELECT_IMAGE_REQUEST_CODE
 import hu.bme.aut.android.proba3.main.expens_income.expenses.inPocket.ActivityInPocket
 
 class ActivityPocket : AppCompatActivity(), AdapterPocket.AdapterInterface {
     private lateinit var adapter: AdapterPocket
     private lateinit var viewModel: ViewModelPocket
     private var callerName: String? = null
+    private lateinit var selectedImageButton: ImageButton
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityPocketBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
 
         //init adapter
         adapter = AdapterPocket(this)
@@ -64,6 +74,7 @@ class ActivityPocket : AppCompatActivity(), AdapterPocket.AdapterInterface {
         if (callerName=="expenses")
             binding.tvTitle.text="Expenses"
 
+
     }
 
     //adapterbol hivodik
@@ -77,6 +88,22 @@ class ActivityPocket : AppCompatActivity(), AdapterPocket.AdapterInterface {
             intent.setClass(this, ActivityInPocket::class.java)
             startActivity(intent)
 
+    }
+
+    override fun activityCall2(ib: ImageButton) {
+        selectedImageButton=ib
+        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        ActivityCompat.startActivityForResult(this, intent, SELECT_IMAGE_REQUEST_CODE, null)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == SELECT_IMAGE_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
+            val imageUri: Uri = data.data ?: return
+            val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, imageUri)
+            selectedImageButton.setImageBitmap(bitmap)
+        }
     }
 
 
