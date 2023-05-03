@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import hu.bme.aut.android.proba3.R
 import hu.bme.aut.android.proba3.databinding.ActivityDebtBinding
-import hu.bme.aut.android.proba3.main.debt.data.DatabaseDebt
+import hu.bme.aut.android.proba3.main.debt.data.RepositoryDebt
 import hu.bme.aut.android.proba3.main.debt.data.DebtItem
 import hu.bme.aut.android.proba3.main.debt.details.Detailes
 
@@ -22,7 +22,7 @@ class FunctionDebt : AppCompatActivity(), AdapterDebt.AdapterInterface,
         viewModel= ViewModelProvider(this).get(ViewModelDebt::class.java)
         val binding: ActivityDebtBinding = DataBindingUtil.setContentView(this, R.layout.activity_debt)
         val adapter: AdapterDebt=AdapterDebt(this)
-        val database: DatabaseDebt=DatabaseDebt.getDatabase(applicationContext)
+        val database: RepositoryDebt=RepositoryDebt.getDatabase(applicationContext)
         val plusz: FloatingActionButton =findViewById(R.id.plusz_gomb)
         val tovabb: Button = findViewById(R.id.bTovabb)
 

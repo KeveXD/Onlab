@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import hu.bme.aut.android.proba3.R
 import hu.bme.aut.android.proba3.databinding.ActivityDebtDetailsBinding
 
-import hu.bme.aut.android.proba3.main.debt.data.DatabaseDebt
+import hu.bme.aut.android.proba3.main.debt.data.RepositoryDebt
 import hu.bme.aut.android.proba3.main.debt.data.DebtItem
 
 lateinit var viewModel: ViewModelDetails
@@ -22,7 +22,7 @@ class Detailes : AppCompatActivity(), AdapterDetails.mainFigyeloInterface,ViewMo
         viewModel= ViewModelProvider(this).get(ViewModelDetails::class.java)
         val binding: ActivityDebtDetailsBinding = DataBindingUtil.setContentView(this, R.layout.activity_debt_details)
         val adapter: AdapterDetails = AdapterDetails(this)
-        val database: DatabaseDebt=DatabaseDebt.getDatabase(applicationContext)
+        val database: RepositoryDebt=RepositoryDebt.getDatabase(applicationContext)
 
         val szamol: Button =findViewById(R.id.bSzamol)
 

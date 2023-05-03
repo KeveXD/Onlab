@@ -44,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:text="A zsebben összesen:"
+            android:text="Összesen ennyi lett elköltve:"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/rvMain"
             app:layout_constraintStart_toStartOf="parent" />
@@ -67,7 +67,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvMain"
             android:layout_width="0dp"
-            android:layout_height="490dp"
+            android:layout_height="400dp"
             app:layout_anchor="@+id/rvMain"
             app:layout_anchorGravity="center"
             app:layout_constraintBottom_toBottomOf="parent"

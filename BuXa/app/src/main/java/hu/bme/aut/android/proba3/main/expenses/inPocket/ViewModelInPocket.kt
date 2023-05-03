@@ -3,17 +3,14 @@ package hu.bme.aut.android.proba3.main.expenses.inPocket
 import android.app.Activity
 import android.content.Context
 import androidx.lifecycle.ViewModel
-import hu.bme.aut.android.proba3.main.debt.AdapterDebt
-import hu.bme.aut.android.proba3.main.debt.data.DatabaseDebt
-import hu.bme.aut.android.proba3.main.debt.data.DebtItem
-import hu.bme.aut.android.proba3.main.expenses.data.DatabaseExpenses
+import hu.bme.aut.android.proba3.main.expenses.data.RepositoryExpenses
 import hu.bme.aut.android.proba3.main.expenses.data.ExpensItem
 import kotlin.concurrent.thread
 
 
 //observabledata,livedata
 class ViewModelInPocket: ViewModel() {
-    lateinit var database: DatabaseExpenses
+    lateinit var database: RepositoryExpenses
     lateinit var adapter: AdapterInPocket
     var pocketName: String?=null
     //runOnUiThread miatt kell

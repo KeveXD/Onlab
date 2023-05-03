@@ -12,7 +12,7 @@ import hu.bme.aut.android.proba3.main.expenses.data.ExpensItem
 class AdapterPocket(private val listener: AdapterPocket.AdapterInterface) :
     RecyclerView.Adapter<AdapterPocket.ViewHolder>() {
 
-    private val pockets = mutableListOf<String>()
+     val pockets = mutableListOf<String>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
         PocketListitemBinding.inflate(LayoutInflater.from(parent.context), parent, false)

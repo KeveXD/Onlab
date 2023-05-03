@@ -9,13 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import hu.bme.aut.android.proba3.R
 import hu.bme.aut.android.proba3.databinding.ActivityInpocketBinding
-import hu.bme.aut.android.proba3.main.debt.AdapterDebt
-import hu.bme.aut.android.proba3.main.debt.FragmentDebt
-import hu.bme.aut.android.proba3.main.debt.ViewModelDebt
-import hu.bme.aut.android.proba3.main.debt.data.DatabaseDebt
-import hu.bme.aut.android.proba3.main.debt.data.DebtItem
-import hu.bme.aut.android.proba3.main.debt.viewModel
-import hu.bme.aut.android.proba3.main.expenses.data.DatabaseExpenses
+import hu.bme.aut.android.proba3.main.expenses.data.RepositoryExpenses
 import hu.bme.aut.android.proba3.main.expenses.data.ExpensItem
 
 lateinit var viewModelExpenses: ViewModelInPocket
@@ -31,7 +25,7 @@ class ActivityInPocket : AppCompatActivity(), AdapterInPocket.AdapterInterface,
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= DataBindingUtil.setContentView(this, R.layout.activity_inpocket)
-        val database: DatabaseExpenses = DatabaseExpenses.getDatabase(applicationContext)
+        val database: RepositoryExpenses = RepositoryExpenses.getDatabase(applicationContext)
         val plusz: FloatingActionButton =findViewById(R.id.plusz_gomb)
 
         //A pocket nevet veszi at
@@ -56,16 +50,11 @@ class ActivityInPocket : AppCompatActivity(), AdapterInPocket.AdapterInterface,
             )
         }
 
-
-
         //Init RecicleView
         binding.rvMain.layoutManager = LinearLayoutManager(this)
         binding.rvMain.adapter = adapter
         viewModelExpenses.loadItemsInBackground()
-
-
-
-
+        
     }
 
     override fun newPaymentCreated(newItem: ExpensItem) {
