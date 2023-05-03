@@ -59,6 +59,11 @@ class ActivityPocket : AppCompatActivity(), AdapterPocket.AdapterInterface {
         viewModel.loadItemsInBackground()
         adapter.update(viewModel.getPocketsList())
 
+        if (callerName=="income")
+            binding.tvTitle.text="Income"
+        if (callerName=="expenses")
+            binding.tvTitle.text="Expenses"
+
     }
 
     //adapterbol hivodik

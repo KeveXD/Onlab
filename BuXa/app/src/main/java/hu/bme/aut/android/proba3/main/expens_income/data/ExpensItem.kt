@@ -15,4 +15,5 @@ data class ExpensItem(
     @ColumnInfo(name = "amount") var amount: Int,
     @ColumnInfo(name = "spentFor") var spentFor: String,
     @ColumnInfo(name = "description") var description: String,
+    @ColumnInfo(name = "Expense/Income") var expenseOrIncome: String
 )

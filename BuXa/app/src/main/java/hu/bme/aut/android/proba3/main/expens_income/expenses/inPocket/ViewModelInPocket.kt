@@ -28,7 +28,7 @@ class ViewModelInPocket: ViewModel() {
     }
 
     //adatbazisba menti az uj DebtItem-et
-    fun newPaymentCreated(newItem: ExpensItem) {
+    fun addItem(newItem: ExpensItem) {
         thread {
             val insertId = database.DatabaseExpensesFun().insert(newItem)
             newItem.id = insertId

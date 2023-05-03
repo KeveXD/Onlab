@@ -49,28 +49,29 @@ class AdapterInPocket(private val pocketName: String?, private val listener: Ada
             item.pocket="Összes"
         else
         item.pocket=pocketName
+        item.expenseOrIncome="expense"
         payments.add(item)
         notifyItemInserted(payments.size - 1)
-        listener.sum(calculateSum())
+        listener.setSum(calculateSum())
     }
 
     fun update(newPayments: List<ExpensItem>) {
         payments.clear()
         payments.addAll(newPayments)
         notifyDataSetChanged()
-        listener.sum(calculateSum())
+        listener.setSum(calculateSum())
     }
 
     fun delete(position: Int){
         payments.removeAt(position)
         notifyDataSetChanged()
-        listener.sum(calculateSum())
+        listener.setSum(calculateSum())
     }
 
     interface AdapterInterface {
         //azert kell mert a viewModel majd kitorli az adatbazisbol
         fun onItemDelete(item: ExpensItem, position: Int)
-        fun sum(p: Int)
+        fun setSum(p: Int)
         fun openFragmentModify(item: ExpensItem)
     }
 

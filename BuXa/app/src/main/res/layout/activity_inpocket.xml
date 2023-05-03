@@ -30,21 +30,32 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <TextView
-            android:id="@+id/tvAmount"
+            android:id="@+id/tvHowMuchMony"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="16dp"
             android:text="200000Ft"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/rvMain"
-            app:layout_constraintStart_toEndOf="@+id/textView2" />
+            app:layout_constraintStart_toEndOf="@+id/tvHowMuchSpendLabel"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/tvHOwMuchMonySpent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:text="Összesen ennyi lett elköltve:"
+            android:text="200000Ft"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/rvMain"
+            app:layout_constraintStart_toEndOf="@+id/tvHowMuchSpendLabel" />
+
+        <TextView
+            android:id="@+id/tvHowMuchSpendLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="Elköltve:"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/rvMain"
             app:layout_constraintStart_toStartOf="parent" />
@@ -64,18 +75,44 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/tvHOwMuchMonyLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="Összesen:"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/rvMain"
+            app:layout_constraintEnd_toStartOf="@+id/tvHowMuchMony"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvPocket22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="Kaja"
+            android:textColor="#F15E53"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:typeface="monospace"
+            app:fontFamily="casual"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvMain"
             android:layout_width="0dp"
-            android:layout_height="400dp"
+            android:layout_height="490dp"
             app:layout_anchor="@+id/rvMain"
             app:layout_anchorGravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-            app:layout_constraintVertical_bias="0.497"
+            app:layout_constraintTop_toBottomOf="@+id/tvPocket"
             tools:ignore="NotSibling"
             tools:listitem="@layout/inpocket_listitem" />
 

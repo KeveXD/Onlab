@@ -61,16 +61,16 @@ class ActivityInPocket : AppCompatActivity(), AdapterInPocket.AdapterInterface,
 
     }
 
-    override fun newPaymentCreated(newItem: ExpensItem) {
-        viewModelExpenses.newPaymentCreated(newItem)
+    override fun addItem(newItem: ExpensItem) {
+        viewModelExpenses.addItem(newItem)
     }
 
     override fun onItemDelete(item: ExpensItem, position: Int) {
         viewModelExpenses.onItemDelete(item,position)
     }
 
-    override fun sum(p: Int) {
-        binding.tvAmount.text=p.toString()
+    override fun setSum(p: Int) {
+        binding.tvHOwMuchMonySpent.text=p.toString()
     }
 
     override fun openFragmentModify(item: ExpensItem) {
@@ -79,6 +79,8 @@ class ActivityInPocket : AppCompatActivity(), AdapterInPocket.AdapterInterface,
             "PaymentFragment"
         )
     }
+
+
 
 
 }

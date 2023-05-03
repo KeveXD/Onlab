@@ -4,10 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 
 
-@Database(entities = [ExpensItem::class], version = 1)
-//repo
+@Database(entities = [ExpensItem::class], version = 2)
 abstract class RepositoryExpenses : RoomDatabase() {
     abstract fun DatabaseExpensesFun(): DaoExpenses
 
@@ -17,7 +18,11 @@ abstract class RepositoryExpenses : RoomDatabase() {
                 applicationContext,
                 RepositoryExpenses::class.java,
                 "ExpensList"
-            ).build();
+            //Az semavaltoztatasok miatt kell ez: .fallbackToDestructiveMigration()
+            ).fallbackToDestructiveMigration().build();
         }
     }
 }
+
+
+

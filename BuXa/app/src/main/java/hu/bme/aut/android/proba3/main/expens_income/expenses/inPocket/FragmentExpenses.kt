@@ -41,7 +41,7 @@ class FragmentExpenses(private val pocketName: String?) : DialogFragment(),
             .setTitle("Új tartozás hozzáadása")
             .setView(binding.root)
             .setPositiveButton("OK") { _, _ ->
-                listener.newPaymentCreated(getItem())
+                listener.addItem(getItem())
             }
             .setNegativeButton("Mégsem", null)
             .create()
@@ -60,11 +60,12 @@ class FragmentExpenses(private val pocketName: String?) : DialogFragment(),
             date = binding.etDate.text.toString(),
             amount = binding.etAmount.text.toString().toIntOrNull() ?: 0,
             spentFor = binding.etFrom.text.toString(),
-            description = binding.etDescription.text.toString()
+            description = binding.etDescription.text.toString(),
+            expenseOrIncome = "expense"
         )
     }
 
     interface FragmentInterface {
-        fun newPaymentCreated(newItem: ExpensItem)
+        fun addItem(newItem: ExpensItem)
     }
 }

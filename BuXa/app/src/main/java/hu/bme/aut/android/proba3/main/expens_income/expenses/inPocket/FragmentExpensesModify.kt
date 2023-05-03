@@ -48,7 +48,7 @@ class FragmentExpensesModify(private val expensItem: ExpensItem? = null,private 
             .setTitle(if (expensItem == null) "Új tartozás hozzáadása" else "Tartozás módosítása")
             .setView(binding.root)
             .setPositiveButton("Mentés") { dialogInterface, i ->
-                listener?.newPaymentCreated(getItem())
+                listener?.addItem(getItem())
             }
             .setNegativeButton("Törlés", null)
             .create()
@@ -75,12 +75,13 @@ class FragmentExpensesModify(private val expensItem: ExpensItem? = null,private 
             date = binding.etDate.text.toString(),
             amount = binding.etAmount.text.toString().toIntOrNull() ?: 0,
             spentFor=binding.etFrom.text.toString(),
-            description = binding.etDescription.text.toString()
+            description = binding.etDescription.text.toString(),
+            expenseOrIncome = "expense"
         )
     }
 
     interface FragmentInterface2 {
-        fun newPaymentCreated(newItem: ExpensItem)
+        fun addItem(newItem: ExpensItem)
     }
 }
 
