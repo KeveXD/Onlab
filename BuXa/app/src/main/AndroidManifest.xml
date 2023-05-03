@@ -14,11 +14,11 @@
         android:theme="@style/Theme.Material3.Dark"
         tools:targetApi="31">
         <activity
-            android:name=".main.expenses.inPocket.ActivityInPocket"
+            android:name="hu.bme.aut.android.proba3.main.expens_income.expenses.inPocket.ActivityInPocket"
             android:label="@string/app_name">
 
         </activity>
-        <activity android:name=".main.expenses.ActivityPocket" />
+        <activity android:name="hu.bme.aut.android.proba3.main.expens_income.ActivityPocket" />
         <activity android:name="hu.bme.aut.android.proba3.main.debt.details.Detailes" />
         <activity android:name="hu.bme.aut.android.proba3.main.debt.FunctionDebt" />
         <activity

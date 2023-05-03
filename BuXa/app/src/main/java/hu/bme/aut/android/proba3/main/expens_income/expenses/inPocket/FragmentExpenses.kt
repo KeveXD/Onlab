@@ -5,10 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.DatePicker
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.DialogFragment
 import hu.bme.aut.android.proba3.databinding.DialogExpensesBinding
-import hu.bme.aut.android.proba3.main.expenses.data.ExpensItem
+import hu.bme.aut.android.proba3.main.expens_income.data.ExpensItem
 import java.text.SimpleDateFormat
 import java.util.*
 

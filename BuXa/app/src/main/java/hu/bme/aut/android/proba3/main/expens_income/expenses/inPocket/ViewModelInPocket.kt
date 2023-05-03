@@ -1,10 +1,10 @@
-package hu.bme.aut.android.proba3.main.expenses.inPocket
+package hu.bme.aut.android.proba3.main.expens_income.expenses.inPocket
 
 import android.app.Activity
 import android.content.Context
 import androidx.lifecycle.ViewModel
-import hu.bme.aut.android.proba3.main.expenses.data.RepositoryExpenses
-import hu.bme.aut.android.proba3.main.expenses.data.ExpensItem
+import hu.bme.aut.android.proba3.main.expens_income.data.RepositoryExpenses
+import hu.bme.aut.android.proba3.main.expens_income.data.ExpensItem
 import kotlin.concurrent.thread
 
 

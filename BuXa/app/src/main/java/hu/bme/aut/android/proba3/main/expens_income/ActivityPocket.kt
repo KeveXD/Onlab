@@ -1,4 +1,4 @@
-package hu.bme.aut.android.proba3.main.expenses
+package hu.bme.aut.android.proba3.main.expens_income
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,22 +7,29 @@ import android.view.View
 import android.widget.Button
 import androidx.lifecycle.ViewModelProvider
 import hu.bme.aut.android.proba3.databinding.ActivityPocketBinding
-import hu.bme.aut.android.proba3.main.expenses.inPocket.ActivityInPocket
+import hu.bme.aut.android.proba3.main.expens_income.expenses.inPocket.ActivityInPocket
 
 class ActivityPocket : AppCompatActivity(), AdapterPocket.AdapterInterface {
     private lateinit var adapter: AdapterPocket
     private lateinit var viewModel: ViewModelPocket
+    private var callerName: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityPocketBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //init adapter
         adapter = AdapterPocket(this)
         binding.recyclerView.adapter = adapter
 
+        //init viewModel
         viewModel = ViewModelProvider(this).get(ViewModelPocket::class.java)
         viewModel.adapter=adapter
+
+        //init callerName
+        callerName = intent.getStringExtra("caller")
+
 
         val plusButton: Button =binding.button
         val saveButton: Button =binding.bSave
@@ -56,10 +63,22 @@ class ActivityPocket : AppCompatActivity(), AdapterPocket.AdapterInterface {
 
     //adapterbol hivodik
     override fun activityCall(name: String) {
-        val intent = Intent(this, ActivityInPocket::class.java).apply {
-            putExtra("name2", name)
+        if (callerName.isNullOrEmpty()){
+            return
         }
-        startActivity(intent)
+        if (callerName=="expenses"){
+            val intent = Intent()
+            intent.putExtra("caller", "income")
+            intent.putExtra("name2", name)
+            intent.setClass(this, ActivityInPocket::class.java)
+            startActivity(intent)
+        }else if (callerName=="income"){
+            val intent = Intent()
+            intent.putExtra("caller", "income")
+            intent.putExtra("name2", name)
+            intent.setClass(this, ActivityInPocket::class.java)
+            startActivity(intent)
+        }
     }
 
 

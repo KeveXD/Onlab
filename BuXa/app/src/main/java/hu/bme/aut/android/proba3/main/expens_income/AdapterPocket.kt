@@ -1,15 +1,12 @@
-package hu.bme.aut.android.proba3.main.expenses
+package hu.bme.aut.android.proba3.main.expens_income
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import hu.bme.aut.android.proba3.databinding.PocketListitemBinding
-import hu.bme.aut.android.proba3.main.debt.AdapterDebt
-import hu.bme.aut.android.proba3.main.debt.data.DebtItem
-import hu.bme.aut.android.proba3.main.expenses.data.ExpensItem
 
 
-class AdapterPocket(private val listener: AdapterPocket.AdapterInterface) :
+class AdapterPocket(private val listener: AdapterInterface) :
     RecyclerView.Adapter<AdapterPocket.ViewHolder>() {
 
      val pockets = mutableListOf<String>()

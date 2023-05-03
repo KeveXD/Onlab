@@ -7,7 +7,7 @@ import android.widget.ImageButton
 import androidx.databinding.DataBindingUtil
 import hu.bme.aut.android.proba3.R
 import hu.bme.aut.android.proba3.databinding.ActivityMenuBinding
-import hu.bme.aut.android.proba3.main.expenses.ActivityPocket
+import hu.bme.aut.android.proba3.main.expens_income.ActivityPocket
 import hu.bme.aut.android.proba3.main.debt.FunctionDebt
 
 class MenuActivity : AppCompatActivity() {
@@ -15,15 +15,31 @@ class MenuActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val binding: ActivityMenuBinding = DataBindingUtil.setContentView(this, R.layout.activity_menu)
-        val befektetesGomb: ImageButton =findViewById(R.id.ibBefektetes)
-        val koltesekGomb: ImageButton =findViewById(R.id.train)
+        val debtButton: ImageButton =findViewById(R.id.ibDebt)
+        val expensesButton: ImageButton =findViewById(R.id.ibExpens)
+        val incomeButton: ImageButton =findViewById(R.id.ibIncome)
+        val queryButton: ImageButton =findViewById(R.id.ibQuery)
+        val investButton: ImageButton =findViewById(R.id.ibInvest)
 
-        befektetesGomb.setOnClickListener{
+
+        debtButton.setOnClickListener{
             val intent = Intent(this, FunctionDebt::class.java)
             startActivity(intent)
         }
-        koltesekGomb.setOnClickListener{
-            val intent = Intent(this, ActivityPocket::class.java)
+        expensesButton.setOnClickListener{
+            val intent = Intent()
+
+            // Az ActivityPocket osztály nevének átadása
+            intent.putExtra("caller", "expenses")
+            intent.setClass(this, ActivityPocket::class.java)
+            startActivity(intent)
+        }
+        incomeButton.setOnClickListener{
+            val intent = Intent()
+
+            // Az ActivityPocket osztály nevének átadása
+            intent.putExtra("caller", "income")
+            intent.setClass(this, ActivityPocket::class.java)
             startActivity(intent)
         }
 

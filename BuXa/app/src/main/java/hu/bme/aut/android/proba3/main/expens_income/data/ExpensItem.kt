@@ -1,4 +1,4 @@
-package hu.bme.aut.android.proba3.main.expenses.data
+package hu.bme.aut.android.proba3.main.expens_income.data
 
 
 

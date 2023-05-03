@@ -1,4 +1,4 @@
-package hu.bme.aut.android.proba3.main.expenses.inPocket
+package hu.bme.aut.android.proba3.main.expens_income.expenses.inPocket
 
 import android.app.DatePickerDialog
 import android.app.Dialog
@@ -9,7 +9,7 @@ import android.widget.DatePicker
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import hu.bme.aut.android.proba3.databinding.DialogExpensesBinding
-import hu.bme.aut.android.proba3.main.expenses.data.ExpensItem
+import hu.bme.aut.android.proba3.main.expens_income.data.ExpensItem
 import java.util.*
 
 

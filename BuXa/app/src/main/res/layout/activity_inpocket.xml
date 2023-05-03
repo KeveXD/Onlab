@@ -7,7 +7,7 @@
     <data>
         <variable
             name="viewmodel"
-            type="hu.bme.aut.android.proba3.main.expenses.inPocket.ViewModelInPocket" />
+            type="hu.bme.aut.android.proba3.main.expens_income.expenses.inPocket.ViewModelInPocket" />
     </data>
 
 

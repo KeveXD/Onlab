@@ -1,12 +1,10 @@
-package hu.bme.aut.android.proba3.main.expenses.inPocket
+package hu.bme.aut.android.proba3.main.expens_income.expenses.inPocket
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import hu.bme.aut.android.proba3.databinding.DebtListitemBinding
 import hu.bme.aut.android.proba3.databinding.InpocketListitemBinding
-import hu.bme.aut.android.proba3.main.debt.data.DebtItem
-import hu.bme.aut.android.proba3.main.expenses.data.ExpensItem
+import hu.bme.aut.android.proba3.main.expens_income.data.ExpensItem
 
 
 class AdapterInPocket(private val pocketName: String?, private val listener: AdapterInterface) :

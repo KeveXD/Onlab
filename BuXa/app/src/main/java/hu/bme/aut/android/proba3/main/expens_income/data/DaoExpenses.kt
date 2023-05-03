@@ -1,6 +1,4 @@
-package hu.bme.aut.android.proba3.main.expenses.data
-
-import hu.bme.aut.android.proba3.main.debt.data.DebtItem
+package hu.bme.aut.android.proba3.main.expens_income.data
 
 
 import androidx.room.*
