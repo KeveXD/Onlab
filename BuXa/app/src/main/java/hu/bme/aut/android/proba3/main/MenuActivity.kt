@@ -9,6 +9,7 @@ import hu.bme.aut.android.proba3.R
 import hu.bme.aut.android.proba3.databinding.ActivityMenuBinding
 import hu.bme.aut.android.proba3.main.expens_income.ActivityPocket
 import hu.bme.aut.android.proba3.main.debt.FunctionDebt
+import hu.bme.aut.android.proba3.main.expens_income.ActivityQuery
 
 class MenuActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +25,10 @@ class MenuActivity : AppCompatActivity() {
 
         debtButton.setOnClickListener{
             val intent = Intent(this, FunctionDebt::class.java)
+            startActivity(intent)
+        }
+        queryButton.setOnClickListener{
+            val intent = Intent(this, ActivityQuery::class.java)
             startActivity(intent)
         }
         expensesButton.setOnClickListener{

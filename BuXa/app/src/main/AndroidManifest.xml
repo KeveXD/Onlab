@@ -24,10 +24,7 @@
         <activity
             android:name=".main.MenuActivity"
             android:exported="false" />
-        <activity
-            android:name=".login.ViewModelLogin"
-            android:exported="false" />
-        <activity
+        <activity android:name=".main.expens_income.ActivityQuery"/>
             android:name=".login.ActivityRegister"
             android:exported="false" />
         <activity

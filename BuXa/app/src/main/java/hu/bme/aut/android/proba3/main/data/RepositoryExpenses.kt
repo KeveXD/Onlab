@@ -1,11 +1,9 @@
-package hu.bme.aut.android.proba3.main.expens_income.data
+package hu.bme.aut.android.proba3.main.data
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.migration.Migration
-import androidx.sqlite.db.SupportSQLiteDatabase
 
 
 @Database(entities = [ExpensItem::class], version = 2)

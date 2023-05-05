@@ -7,7 +7,7 @@ import android.widget.DatePicker
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import hu.bme.aut.android.proba3.databinding.DialogExpensesBinding
-import hu.bme.aut.android.proba3.main.expens_income.data.ExpensItem
+import hu.bme.aut.android.proba3.main.data.ExpensItem
 import java.text.SimpleDateFormat
 import java.util.*
 

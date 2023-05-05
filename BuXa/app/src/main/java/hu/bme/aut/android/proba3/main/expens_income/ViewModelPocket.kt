@@ -2,8 +2,8 @@ package hu.bme.aut.android.proba3.main.expens_income
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import hu.bme.aut.android.proba3.main.expens_income.data.RepositoryExpenses
-import hu.bme.aut.android.proba3.main.expens_income.data.ExpensItem
+import hu.bme.aut.android.proba3.main.data.RepositoryExpenses
+import hu.bme.aut.android.proba3.main.data.ExpensItem
 import kotlin.concurrent.thread
 
 class ViewModelPocket(application: Application) : AndroidViewModel(application) {

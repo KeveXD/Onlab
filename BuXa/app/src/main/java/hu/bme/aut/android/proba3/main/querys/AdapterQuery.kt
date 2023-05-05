@@ -1,4 +1,5 @@
-package hu.bme.aut.android.proba3.main.expens_income.expenses.inPocket
+package hu.bme.aut.android.proba3.main.querys
+
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,8 +8,8 @@ import hu.bme.aut.android.proba3.databinding.InpocketListitemBinding
 import hu.bme.aut.android.proba3.main.data.ExpensItem
 
 
-class AdapterInPocket(private val pocketName: String?, private val listener: AdapterInterface) :
-    RecyclerView.Adapter<AdapterInPocket.ExpensesListitemViewHolder>() {
+class AdapterQuery( private val listener: AdapterInterface) :
+    RecyclerView.Adapter<AdapterQuery.ExpensesListitemViewHolder>() {
 
     val payments = mutableListOf<ExpensItem>()
 
@@ -24,8 +25,7 @@ class AdapterInPocket(private val pocketName: String?, private val listener: Ada
         holder.binding.tvNotes.text=p.expenseOrIncome
         holder.binding.tvAmount.text = "${p.amount} Ft"
 
-
-        //a kuka gomb megnyomasakor meghivjuk a torles fuggvenyt a helyi interfacen
+        //modositas
         holder.binding.ibEdit.setOnClickListener(){
             listener.openFragmentModify(payments[position])
             listener.onItemDelete(p,position)
@@ -65,7 +65,7 @@ class AdapterInPocket(private val pocketName: String?, private val listener: Ada
     }
 
     interface AdapterInterface {
-        //azert kell mert a viewModel majd kitorli az adatbazisbol
+
         fun onItemDelete(item: ExpensItem, position: Int)
         fun setSum(p: Int)
         fun openFragmentModify(item: ExpensItem)

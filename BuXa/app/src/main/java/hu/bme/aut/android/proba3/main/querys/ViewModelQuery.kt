@@ -1,17 +1,16 @@
-package hu.bme.aut.android.proba3.main.expens_income.expenses.inPocket
+package hu.bme.aut.android.proba3.main.querys
 
 import android.app.Activity
 import android.content.Context
 import androidx.lifecycle.ViewModel
-import hu.bme.aut.android.proba3.main.data.RepositoryExpenses
 import hu.bme.aut.android.proba3.main.data.ExpensItem
+import hu.bme.aut.android.proba3.main.data.RepositoryExpenses
 import kotlin.concurrent.thread
 
 
-//observabledata,livedata
-class ViewModelInPocket: ViewModel() {
+class ViewModelQuery: ViewModel() {
     lateinit var database: RepositoryExpenses
-    lateinit var adapter: AdapterInPocket
+    lateinit var adapter: AdapterQuery
     var pocketName: String?=null
     //runOnUiThread miatt kell
     lateinit var context: Context
@@ -40,7 +39,7 @@ class ViewModelInPocket: ViewModel() {
 
     fun loadItemsInBackground() {
         thread {
-            val items = database.DatabaseExpensesFun().getAll().filter { it.pocket == pocketName }
+            val items = database.DatabaseExpensesFun().getAll()
             (context as Activity).runOnUiThread {
                 adapter.update(items)
             }

@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import hu.bme.aut.android.proba3.R
 import hu.bme.aut.android.proba3.databinding.ActivityInpocketBinding
-import hu.bme.aut.android.proba3.main.expens_income.data.RepositoryExpenses
-import hu.bme.aut.android.proba3.main.expens_income.data.ExpensItem
+import hu.bme.aut.android.proba3.main.data.RepositoryExpenses
+import hu.bme.aut.android.proba3.main.data.ExpensItem
 
 lateinit var viewModelExpenses: ViewModelInPocket
 lateinit var binding: ActivityInpocketBinding
@@ -25,7 +25,7 @@ class ActivityInPocket : AppCompatActivity(), AdapterInPocket.AdapterInterface,
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //valamert nem jo
+        //valamert nem jo???????????????????????????????????????????????????????????????????????
         getSupportActionBar()?.hide();
 
         binding= DataBindingUtil.setContentView(this, R.layout.activity_inpocket)
@@ -34,7 +34,7 @@ class ActivityInPocket : AppCompatActivity(), AdapterInPocket.AdapterInterface,
 
         //A pocket nevet veszi at
         pocketName = intent.getStringExtra("name2")
-
+        //a hivo funkcio nevet veszi at
         callerName = intent.getStringExtra("caller")
         binding.tvPocket.text=pocketName.toString()
 
@@ -59,6 +59,7 @@ class ActivityInPocket : AppCompatActivity(), AdapterInPocket.AdapterInterface,
         //Init RecicleView
         binding.rvMain.layoutManager = LinearLayoutManager(this)
         binding.rvMain.adapter = adapter
+        //?????????????????????????????????
         viewModelExpenses.sortPaymentsByDate()
         viewModelExpenses.loadItemsInBackground()
 
