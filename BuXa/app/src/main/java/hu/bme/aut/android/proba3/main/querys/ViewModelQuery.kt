@@ -25,15 +25,20 @@ class ViewModelQuery: ViewModel() {
         }
     }
 
-    fun getPockets(): List<String> {
-        val pockets = mutableListOf<String>()
-        val items = database.DatabaseExpensesFun().getAll()
-        for (item in items) {
-            if (!pockets.contains(item.pocket)) {
-                pockets.add(item.pocket)
+    fun getPockets(callback: (List<String>) -> Unit) {
+        thread {
+            val pockets = mutableListOf<String>()
+            val items = database.DatabaseExpensesFun().getAll()
+            for (item in items) {
+                if (!pockets.contains(item.pocket)) {
+                    pockets.add(item.pocket)
+                }
+            }
+            pockets.add(0, "Összes")
+            (context as Activity).runOnUiThread {
+                callback(pockets)
             }
         }
-        return pockets
     }
 
 
