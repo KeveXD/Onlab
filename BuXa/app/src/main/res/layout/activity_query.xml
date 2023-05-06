@@ -66,9 +66,9 @@
                             android:id="@+id/textView1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="136dp"
+                            android:layout_marginLeft="46dp"
                             android:layout_marginTop="20dp"
-                            android:text="Text 1" />
+                            android:text="Listázás kezdődátuma" />
 
                         <Button
                             android:id="@+id/button1"
@@ -84,9 +84,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/textView1"
-                            android:layout_marginLeft="136dp"
+                            android:layout_marginLeft="46dp"
                             android:layout_marginTop="37dp"
-                            android:text="Text 2" />
+                            android:text="Listázás végsődátuma: " />
 
                         <Button
                             android:id="@+id/button2"
@@ -106,7 +106,16 @@
                             android:layout_marginLeft="66dp"
                             android:layout_marginTop="16dp"
                             android:layout_marginRight="66dp"
-                            android:hint="EditText 1" />
+                            android:hint="Zseb neve:" />
+
+                        <Spinner
+                            android:id="@+id/pocketSpinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/textView2"
+                            android:layout_marginLeft="66dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginRight="66dp" />
 
                         <EditText
                             android:id="@+id/editText2"
@@ -150,7 +159,7 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_margin="10dp"
+                    android:layout_margin="0dp"
                     android:layout_weight="1">
 
                     <androidx.recyclerview.widget.RecyclerView
@@ -158,6 +167,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="#636B59"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                         tools:listitem="@layout/inpocket_listitem" />
 
                 </androidx.cardview.widget.CardView>

@@ -25,8 +25,7 @@
             android:name=".main.MenuActivity"
             android:exported="false" />
         <activity android:name=".main.expens_income.ActivityQuery"/>
-            android:name=".login.ActivityRegister"
-            android:exported="false" />
+        <activity android:name=".login.ActivityRegister" />
         <activity
             android:name=".login.ActivityLogin"
             android:exported="true"
