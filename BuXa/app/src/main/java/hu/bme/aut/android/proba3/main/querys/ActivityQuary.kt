@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import hu.bme.aut.android.proba3.databinding.ActivityQueryBinding
@@ -19,8 +20,12 @@ class ActivityQuery : AppCompatActivity(), AdapterQuery.AdapterInterface {
 
     private lateinit var viewModelQuery: ViewModelQuery
     private lateinit var adapter: AdapterQuery
-    private var isLLQueryExpanded = false
-    private var initialQueryHeight = 0
+
+    private var startDate: String? = null
+    private var endDate: String? = null
+    private lateinit var pocketName: String
+    private lateinit var monyFromWhere: String
+    private lateinit var notes: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,16 +43,13 @@ class ActivityQuery : AppCompatActivity(), AdapterQuery.AdapterInterface {
         viewModelQuery.database = database
         viewModelQuery.context = this
 
-        initialQueryHeight = binding.llQuery.height
-
         binding.bGo.setOnClickListener {
-            if (!isLLQueryExpanded) {
-                binding.llQuery.animate().translationY(-initialQueryHeight.toFloat())
-                isLLQueryExpanded = true
-            } else {
-                binding.llQuery.animate().translationY(0f)
-                isLLQueryExpanded = false
-            }
+            pocketName = binding.pocketSpinner.selectedItem.toString()
+            monyFromWhere = binding.editText2.text?.toString() ?: ""
+            notes = binding.editText3.text?.toString() ?: ""
+
+            viewModelQuery.filterItems(startDate, endDate, pocketName, monyFromWhere, notes)
+
         }
 
         viewModelQuery.getPockets { pocketsList ->
@@ -62,12 +64,45 @@ class ActivityQuery : AppCompatActivity(), AdapterQuery.AdapterInterface {
         }
 
         binding.button1.setOnClickListener {
-            showDatePicker(binding.textView1,"Kezdődátum")
+
+            val c = Calendar.getInstance()
+            val year = c.get(Calendar.YEAR)
+            val month = c.get(Calendar.MONTH)
+            val day = c.get(Calendar.DAY_OF_MONTH)
+
+            val datePickerDialog = DatePickerDialog(
+                this,
+                { _, year, monthOfYear, dayOfMonth ->
+                    startDate = "$year-${monthOfYear + 1}-$dayOfMonth"
+                    binding.textView1.text = "Kezdődátum: $startDate"
+                },
+                year,
+                month,
+                day
+            )
+            datePickerDialog.show()
         }
 
         binding.button2.setOnClickListener {
-            showDatePicker(binding.textView2,"Végsődátum")
+
+            val c = Calendar.getInstance()
+            val year = c.get(Calendar.YEAR)
+            val month = c.get(Calendar.MONTH)
+            val day = c.get(Calendar.DAY_OF_MONTH)
+
+            val datePickerDialog = DatePickerDialog(
+                this,
+                { _, year, monthOfYear, dayOfMonth ->
+                    endDate = "$year-${monthOfYear + 1}-$dayOfMonth"
+                    binding.textView2.text = "Végsődátum: $endDate"
+                },
+                year,
+                month,
+                day
+            )
+            datePickerDialog.show()
         }
+
 
         viewModelQuery.loadItemsInBackground()
     }
@@ -81,22 +116,7 @@ class ActivityQuery : AppCompatActivity(), AdapterQuery.AdapterInterface {
         }
     }
 
-    private fun showDatePicker(textView: TextView, pre: String) {
-        val c = Calendar.getInstance()
-        val year = c.get(Calendar.YEAR)
-        val month = c.get(Calendar.MONTH)
-        val day = c.get(Calendar.DAY_OF_MONTH)
-        val datePickerDialog = DatePickerDialog(
-            this,
-            DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
-                textView.text = "$pre: $year-${monthOfYear+1}-$dayOfMonth"
-            },
-            year,
-            month,
-            day
-        )
-        datePickerDialog.show()
-    }
+
 }
 
 

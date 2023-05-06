@@ -41,6 +41,51 @@ class ViewModelQuery: ViewModel() {
         }
     }
 
+    fun filterItems(startDate: String?, endDate: String?, pocketName: String?, moneyFromWhere: String?, notes: String?) {
+        val second = mutableListOf<ExpensItem>()
+        for (payment in adapter.payments) {
+            if ((startDate == null || !isSecondDateAfterFirst(payment.date, startDate))
+                && (endDate == null || !isSecondDateAfterFirst(endDate, payment.date))
+                && (pocketName == "Összes" || payment.pocket == pocketName)
+                && (moneyFromWhere == null || moneyFromWhere == "" || payment.spentFor.contains(moneyFromWhere))
+                && (notes == null || notes=="" || payment.description.contains(notes))) {
+                second.add(payment)
+
+            }
+            
+        }
+        adapter.payments.clear()
+        adapter.payments.addAll(second)
+        adapter.notifyDataSetChanged()
+    }
+
+
+
+    fun isSecondDateAfterFirst(firstDate: String, secondDate: String): Boolean {
+        val firstDateParts = firstDate.split("-")
+        val secondDateParts = secondDate.split("-")
+
+        val year1 = firstDateParts[0].toInt()
+        val month1 = firstDateParts[1].toInt()
+        val day1 = firstDateParts[2].toInt()
+
+        val year2 = secondDateParts[0].toInt()
+        val month2 = secondDateParts[1].toInt()
+        val day2 = secondDateParts[2].toInt()
+
+        if (year2 > year1) {
+            return true
+        } else if (year2 == year1 && month2 > month1) {
+            return true
+        } else if (year2 == year1 && month2 == month1 && day2 > day1) {
+            return true
+        }
+
+        return false
+    }
+
+
+
 
 
 
