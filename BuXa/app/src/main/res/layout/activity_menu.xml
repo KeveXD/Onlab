@@ -10,10 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#3C4787">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#FFFFFF">
+
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="0dp"
@@ -24,6 +26,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="0dp"
@@ -36,6 +39,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/toolbar"
                 tools:ignore="HardcodedText" />
+
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="0dp"
@@ -46,25 +50,27 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView"
                 tools:ignore="HardcodedText" />
+
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="0dp"
                 android:layout_height="160dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
+                android:contentDescription="TODO"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textView"
                 app:layout_constraintTop_toBottomOf="@+id/toolbar"
                 app:srcCompat="@drawable/kezdo"
-                android:contentDescription="TODO"
                 tools:ignore="ContentDescription" />
+
             <LinearLayout
                 android:id="@+id/llQuery"
                 android:layout_width="0dp"
                 android:layout_height="175dp"
+                android:background="#232B59"
                 android:orientation="horizontal"
                 android:padding="10dp"
-                android:background="#232B59"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -75,6 +81,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:layout_weight="1">
+
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
@@ -102,17 +109,19 @@
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/linearLayout2"
                 android:layout_width="0dp"
                 android:layout_height="175dp"
+                android:background="#232B59"
                 android:orientation="horizontal"
                 android:padding="10dp"
-                android:background="#232B59"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/llQuery">
+
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -150,11 +159,13 @@
 
 
                 </androidx.cardview.widget.CardView>
+
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:layout_weight="1">
+
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
@@ -184,17 +195,15 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:id="@+id/linearLayout3"
+                android:layout_width="match_parent"
                 android:layout_height="175dp"
                 android:background="#232B59"
                 android:orientation="horizontal"
                 android:padding="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
-
+                app:layout_constraintEnd_toEndOf="parent">
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -261,11 +270,96 @@
                             android:src="@drawable/earn" />
                     </RelativeLayout>
 
-
-                    
                 </androidx.cardview.widget.CardView>
+
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="175dp"
+                android:background="#232B59"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/textViewSave"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ibSave"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="10dp"
+                            android:text="Mentés"
+                            android:textSize="24sp" />
+
+                        <ImageButton
+                            android:id="@+id/ibSave"
+                            android:layout_width="75dp"
+                            android:layout_height="75dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="15dp"
+                            android:background="@null"
+                            android:onClick="onContactButtonClick"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/mentes" />
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/textViewLoad"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ibLoad"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="10dp"
+                            android:text="Betöltés"
+                            android:textSize="24sp"
+                            tools:ignore="HardcodedText" />
+
+                        <ImageButton
+                            android:id="@+id/ibLoad"
+                            android:layout_width="75dp"
+                            android:layout_height="75dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="15dp"
+                            android:background="@null"
+                            android:onClick="onContactButtonClick"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/letoltes" />
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+
     </ScrollView>
 
 </layout>
