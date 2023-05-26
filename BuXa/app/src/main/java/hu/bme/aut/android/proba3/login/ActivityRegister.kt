@@ -3,6 +3,7 @@ package hu.bme.aut.android.proba3.login
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -10,54 +11,75 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import hu.bme.aut.android.proba3.R
 
 class ActivityRegister : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
-
+    private lateinit var firestore: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        val registerButton: Button =findViewById(R.id.button_register)
-        val progressBar: ProgressBar=findViewById(R.id.progress_bar)
+        val registerButton: Button = findViewById(R.id.button_register)
+        val progressBar: ProgressBar = findViewById(R.id.progress_bar)
 
-        auth= Firebase.auth
+        auth = Firebase.auth
+        firestore = FirebaseFirestore.getInstance()
 
-        registerButton.setOnClickListener{
-            progressBar.setVisibility(View.VISIBLE)
+        registerButton.setOnClickListener {
+            progressBar.visibility = View.VISIBLE
             performSignUp()
-            progressBar.setVisibility(View.GONE)
         }
     }
 
+    private fun performSignUp() {
+        val emailEditText: EditText = findViewById(R.id.edit_text_email)
+        val passwordEditText: EditText = findViewById(R.id.edit_text_password)
 
-    private fun performSignUp(){
-        val email=findViewById<EditText>(R.id.edit_text_email)
-        val password=findViewById<EditText>(R.id.edit_text_password)
+        val email = emailEditText.text.toString()
+        val password = passwordEditText.text.toString()
 
-        val inputEmail=email.text.toString()
-        val inputPassword=password.text.toString()
-
-        auth?.createUserWithEmailAndPassword(inputEmail, inputPassword)
-            ?.addOnCompleteListener(this) { task ->
+        auth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    val intent = Intent(this, ActivityLogin::class.java)
-                    startActivity(intent)
+                    // Sikeres regisztráció
+                    Toast.makeText(baseContext, "Sikeres regisztráció", Toast.LENGTH_SHORT).show()
 
-                    Toast.makeText(baseContext, "Autentikáció sikeres regisztrációnál", Toast.LENGTH_SHORT).show()
+                    // Betöltés az adatokkal
+                    val currentUser = auth.currentUser
+                    val userEmail = currentUser?.email
+                    val userId = currentUser?.uid
 
+                    // Felhasználó hozzáadása a Firestore adatbázishoz
+                    val user = hashMapOf(
+                        "email" to userEmail
+                    )
+                    firestore.collection("felhasznalok")
+                        .document(userId!!)
+                        .set(user)
+                        .addOnSuccessListener {
+                            // Adatok sikeresen feltöltve a Firestore adatbázisba
 
+                            // Navigálás a bejelentkezési oldalra
+                            val intent = Intent(this, ActivityLogin::class.java)
+                            startActivity(intent)
+                            finish()
+                        }
+                        .addOnFailureListener { e ->
+                            // Hiba történt az adatfeltöltés során
+                            Log.e(TAG, "Hiba történt az adatfeltöltés során", e)
+                        }
                 } else {
-                    // If sign in fails, display a message to the user.
-                    Toast.makeText(baseContext, "Autentikációs hiba regisztrációnál", Toast.LENGTH_SHORT).show()
+                    // Sikertelen regisztráció
+                    Toast.makeText(baseContext, "Hibás regisztrációs adatok", Toast.LENGTH_SHORT).show()
                 }
             }
-            ?.addOnFailureListener{
-                Toast.makeText(this, "Errroooor: ${it.localizedMessage}", Toast.LENGTH_SHORT)
-            }
+    }
+
+    companion object {
+        private const val TAG = "ActivityRegister"
     }
 }

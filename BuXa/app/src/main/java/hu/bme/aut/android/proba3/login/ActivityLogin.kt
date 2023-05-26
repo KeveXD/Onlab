@@ -13,6 +13,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import hu.bme.aut.android.proba3.R
+import hu.bme.aut.android.proba3.ViewModelHolder
 import hu.bme.aut.android.proba3.databinding.ActivityLoginBinding
 import hu.bme.aut.android.proba3.main.MenuActivity
 
@@ -23,7 +24,8 @@ class ActivityLogin : AppCompatActivity(), LoginListener {
         super.onCreate(savedInstanceState)
 
         val binding: ActivityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login)
-        val viewModel= ViewModelProvider(this).get(ViewModelLogin::class.java)
+        val viewModelLogin = ViewModelProvider(this).get(ViewModelLogin::class.java)
+        ViewModelHolder.viewModelLogin = viewModelLogin
         val registerText: TextView=findViewById(R.id.text_register)
         val SignInButton: Button =findViewById(R.id.button_sign_in)
 
@@ -34,37 +36,37 @@ class ActivityLogin : AppCompatActivity(), LoginListener {
 
 
 
-        binding.viewmodel=viewModel
-        viewModel.listener=this
+        binding.viewmodel=viewModelLogin
+        viewModelLogin.listener=this
         auth= Firebase.auth
-        viewModel.auth=auth
-        viewModel.activity=this
+        viewModelLogin.auth=auth
+        viewModelLogin.activity=this
 
-        binding.viewmodel = viewModel.apply {
-            email = "arpi@gmail.com"
-            password = "Arpi123"
+        binding.viewmodel = viewModelLogin.apply {
+            email = "proba@gmail.com"
+            password = "Proba123"
         }
 
-        viewModel.listener = this
+        viewModelLogin.listener = this
         auth = Firebase.auth
-        viewModel.auth = auth
-        viewModel.activity = this
+        viewModelLogin.auth = auth
+        viewModelLogin.activity = this
 
         binding.editTextEmail.addTextChangedListener {
-            viewModel.email = it.toString()
+            viewModelLogin.email = it.toString()
         }
 
         binding.editTextPassword.addTextChangedListener {
-            viewModel.password = it.toString()
+            viewModelLogin.password = it.toString()
         }
 
 
         binding.editTextEmail.addTextChangedListener {
-            viewModel.email = it.toString()
+            viewModelLogin.email = it.toString()
         }
 
         binding.editTextPassword.addTextChangedListener {
-            viewModel.password = it.toString()
+            viewModelLogin.password = it.toString()
         }
 
     }
@@ -97,5 +99,3 @@ class ActivityLogin : AppCompatActivity(), LoginListener {
     }
 
 }
-
-

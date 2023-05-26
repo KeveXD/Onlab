@@ -6,8 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.TextView
-import android.widget.Toast
+
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import hu.bme.aut.android.proba3.databinding.ActivityQueryBinding
@@ -43,6 +42,7 @@ class ActivityQuery : AppCompatActivity(), AdapterQuery.AdapterInterface {
         viewModelQuery.database = database
         viewModelQuery.context = this
 
+        //mehet gomb
         binding.bGo.setOnClickListener {
             pocketName = binding.pocketSpinner.selectedItem.toString()
             monyFromWhere = binding.editText2.text?.toString() ?: ""
@@ -52,6 +52,7 @@ class ActivityQuery : AppCompatActivity(), AdapterQuery.AdapterInterface {
 
         }
 
+        //recycleView beállítása
         viewModelQuery.getPockets { pocketsList ->
             val pocketAdapter = ArrayAdapter(this, R.layout.simple_spinner_item, pocketsList)
             pocketAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -73,12 +74,9 @@ class ActivityQuery : AppCompatActivity(), AdapterQuery.AdapterInterface {
             val datePickerDialog = DatePickerDialog(
                 this,
                 { _, year, monthOfYear, dayOfMonth ->
-                    startDate = "$year-${monthOfYear + 1}-$dayOfMonth"
+                    startDate = String.format("%04d-%02d-%02d", year, monthOfYear + 1, dayOfMonth)
                     binding.textView1.text = "Kezdődátum: $startDate"
-                },
-                year,
-                month,
-                day
+                }, year, month, day
             )
             datePickerDialog.show()
         }
@@ -93,16 +91,12 @@ class ActivityQuery : AppCompatActivity(), AdapterQuery.AdapterInterface {
             val datePickerDialog = DatePickerDialog(
                 this,
                 { _, year, monthOfYear, dayOfMonth ->
-                    endDate = "$year-${monthOfYear + 1}-$dayOfMonth"
-                    binding.textView2.text = "Végsődátum: $endDate"
-                },
-                year,
-                month,
-                day
+                    startDate = String.format("%04d-%02d-%02d", year, monthOfYear + 1, dayOfMonth)
+                    binding.textView1.text = "Végső dátum: $startDate"
+                }, year, month, day
             )
             datePickerDialog.show()
         }
-
 
         viewModelQuery.loadItemsInBackground()
     }

@@ -16,22 +16,23 @@ import hu.bme.aut.android.proba3.main.debt.details.Detailes
 
 lateinit var viewModel: ViewModelDebt
 class FunctionDebt : AppCompatActivity(), AdapterDebt.AdapterInterface,
-    FragmentDebt.FragmentInterface, ViewModelDebt.mainFigyelo {
+    FragmentDebt.FragmentInterface {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel= ViewModelProvider(this).get(ViewModelDebt::class.java)
         val binding: ActivityDebtBinding = DataBindingUtil.setContentView(this, R.layout.activity_debt)
         val adapter: AdapterDebt=AdapterDebt(this)
         val database: RepositoryDebt=RepositoryDebt.getDatabase(applicationContext)
-        val plusz: FloatingActionButton =findViewById(R.id.plusz_gomb)
-        val tovabb: Button = findViewById(R.id.bTovabb)
+        val plusz: FloatingActionButton = binding.pluszGomb
+        val tovabb: Button = binding.bTovabb
+
 
         //init viewModel
         binding.viewmodel=viewModel
         viewModel.adapter=adapter
         viewModel.database=database
         viewModel.context=this
-        //viewModel.listener=this
+
 
         //megnyit egy fragmentet
         plusz.setOnClickListener{

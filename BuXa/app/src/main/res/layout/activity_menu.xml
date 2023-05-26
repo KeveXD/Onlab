@@ -189,6 +189,7 @@
                 android:background="#232B59"
                 android:orientation="horizontal"
                 android:padding="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -259,6 +260,9 @@
                             android:scaleType="fitXY"
                             android:src="@drawable/earn" />
                     </RelativeLayout>
+
+
+                    
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,7 +20,7 @@ class MenuActivity : AppCompatActivity() {
         val expensesButton: ImageButton =findViewById(R.id.ibExpens)
         val incomeButton: ImageButton =findViewById(R.id.ibIncome)
         val queryButton: ImageButton =findViewById(R.id.ibQuery)
-        val investButton: ImageButton =findViewById(R.id.ibInvest)
+        val saveButton: ImageButton =findViewById(R.id.ibInvest)
 
 
         debtButton.setOnClickListener{
