@@ -58,7 +58,7 @@ class ActivityRegister : AppCompatActivity() {
                         "email" to userEmail
                     )
                     firestore.collection("felhasznalok")
-                        .document(userId!!)
+                        .document(email)
                         .set(user)
                         .addOnSuccessListener {
                             // Adatok sikeresen feltöltve a Firestore adatbázisba

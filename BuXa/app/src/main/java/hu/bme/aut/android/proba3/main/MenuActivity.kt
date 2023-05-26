@@ -118,7 +118,7 @@ class MenuActivity : AppCompatActivity() {
         loadButton.setOnClickListener {
             ViewModelHolder.viewModelLogin.email?.let { email ->
                 val usersCollection = firestore.collection("felhasznalok")
-                val userDocument = usersCollection.document("uTAMxEcc4kduxBlVL7pZUqKgYmF2")
+                val userDocument = usersCollection.document(ViewModelHolder.viewModelLogin.email.toString())
 
                 userDocument.get().addOnSuccessListener { documentSnapshot ->
                     if (documentSnapshot.exists()) {
