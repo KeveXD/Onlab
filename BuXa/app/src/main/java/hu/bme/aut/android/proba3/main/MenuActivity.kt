@@ -19,6 +19,7 @@ import hu.bme.aut.android.proba3.main.expens_income.ActivityQuery
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 
 
@@ -117,29 +118,24 @@ class MenuActivity : AppCompatActivity() {
         loadButton.setOnClickListener {
             ViewModelHolder.viewModelLogin.email?.let { email ->
                 val usersCollection = firestore.collection("felhasznalok")
-                val userDocument = usersCollection.document(email)
+                val userDocument = usersCollection.document("uTAMxEcc4kduxBlVL7pZUqKgYmF2")
 
                 userDocument.get().addOnSuccessListener { documentSnapshot ->
                     if (documentSnapshot.exists()) {
-                        val dataCollection = userDocument.collection("adatok")
+                        val dataCollection = documentSnapshot.reference.collection("adatok")
 
                         // Törölje az összes elemet a Room adatbázisból
-                        val database = RepositoryDebt.getDatabase(applicationContext)
-                        val daoDebt = database.DatabaseDebtFun()
-                        val debtItems = daoDebt.getAll()
-                        for (item in debtItems) {
-                            daoDebt.deleteItem(item)
-                        }
+                        CoroutineScope(Dispatchers.IO).launch {
+                            val database = RepositoryDebt.getDatabase(applicationContext)
+                            val daoDebt = database.DatabaseDebtFun()
+                            daoDebt.deleteAll()
 
-                        // Betöltés az adatokból a Room adatbázisba
-                        dataCollection.get().addOnSuccessListener { querySnapshot ->
-                            val newDebtItems = querySnapshot.toObjects(DebtItem::class.java)
+                            // Betöltés az adatokból a Room adatbázisba
+                            val newDebtItems = dataCollection.get().await().toObjects(DebtItem::class.java)
                             for (newItem in newDebtItems) {
                                 daoDebt.insert(newItem)
                             }
                             showToast("Adatok sikeresen betöltve")
-                        }.addOnFailureListener { exception ->
-                            showToast("Hiba történt az adatok betöltésekor: ${exception.message}")
                         }
                     } else {
                         showToast("Felhasználói dokumentum nem található")
@@ -149,6 +145,15 @@ class MenuActivity : AppCompatActivity() {
                 }
             }
         }
+
+
+
+
+
+
+
+
+
 
 
 
