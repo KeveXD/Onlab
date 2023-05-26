@@ -13,4 +13,6 @@ data class DebtItem(
     @ColumnInfo(name = "description") var description: String,
     @ColumnInfo(name = "amount") var amount: Int,
     @ColumnInfo(name = "is_payed") var isPayed: Boolean
-)
+) {
+    constructor() : this(null, "", "", "", 0, false)
+}

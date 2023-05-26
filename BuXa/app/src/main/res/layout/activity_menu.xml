@@ -303,7 +303,7 @@
                             android:layout_below="@id/ibSave"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
-                            android:text="Mentés"
+                            android:text="Feltöltés"
                             android:textSize="24sp" />
 
                         <ImageButton
@@ -336,7 +336,7 @@
                             android:layout_below="@id/ibLoad"
                             android:layout_centerHorizontal="true"
                             android:layout_marginTop="10dp"
-                            android:text="Betöltés"
+                            android:text="Letöltés"
                             android:textSize="24sp"
                             tools:ignore="HardcodedText" />
 
