@@ -88,21 +88,38 @@ class MenuActivity : AppCompatActivity() {
                         val userDocument = querySnapshot.documents[0]
                         val dataCollection = userDocument.reference.collection("adatok")
 
-                        // Lekérdezés az összes elemről a Room adatbázisból
-                        CoroutineScope(Dispatchers.IO).launch {
-                            val database = RepositoryDebt.getDatabase(applicationContext)
-                            val debtItems = database.DatabaseDebtFun().getAll()
-
-                            // Mentés az adatok kollekcióban
-                            for (item in debtItems) {
-                                dataCollection.add(item)
-                                    .addOnSuccessListener {
-                                        showToast("Adatok sikeresen mentve")
-                                    }
-                                    .addOnFailureListener { exception ->
-                                        showToast("Adatok mentése sikertelen: ${exception.message}")
-                                    }
+                        // Adatok törlése a kollekcióból
+                        dataCollection.get().addOnSuccessListener { snapshot ->
+                            val batch = firestore.batch()
+                            for (document in snapshot.documents) {
+                                batch.delete(document.reference)
                             }
+                            batch.commit()
+                                .addOnSuccessListener {
+                                    // Lekérdezés az összes elemről a Room adatbázisból
+                                    CoroutineScope(Dispatchers.IO).launch {
+                                        val database = RepositoryDebt.getDatabase(applicationContext)
+                                        val debtItems = database.DatabaseDebtFun().getAll()
+
+                                        // Mentés az adatok kollekcióban
+                                        val saveBatch = firestore.batch()
+                                        for (item in debtItems) {
+                                            saveBatch.set(dataCollection.document(), item)
+                                        }
+                                        saveBatch.commit()
+                                            .addOnSuccessListener {
+                                                showToast("Adatok sikeresen mentve")
+                                            }
+                                            .addOnFailureListener { exception ->
+                                                showToast("Adatok mentése sikertelen: ${exception.message}")
+                                            }
+                                    }
+                                }
+                                .addOnFailureListener { exception ->
+                                    showToast("Adatok törlése sikertelen: ${exception.message}")
+                                }
+                        }.addOnFailureListener { exception ->
+                            showToast("Hiba történt a dokumentum lekérésekor: ${exception.message}")
                         }
                     } else {
                         showToast("Felhasználói dokumentum nem található")
@@ -112,6 +129,7 @@ class MenuActivity : AppCompatActivity() {
                 }
             }
         }
+
 
 
 
