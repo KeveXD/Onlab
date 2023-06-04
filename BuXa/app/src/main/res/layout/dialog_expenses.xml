@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dip"
-        android:text="Mennyit költöttél?" />
+        android:text="Mennyit költöttél?/Mennyit kaptál?" />
 
     <EditText
         android:id="@+id/etAmount"

@@ -15,7 +15,7 @@ import hu.bme.aut.android.proba3.main.data.ExpensItem
 lateinit var viewModelExpenses: ViewModelInPocket
 lateinit var binding: ActivityInpocketBinding
 class ActivityInPocket : AppCompatActivity(), AdapterInPocket.AdapterInterface,
-    ViewModelInPocket.mainObserver, FragmentExpenses.FragmentInterface, FragmentExpensesModify.FragmentInterface2 {
+     FragmentExpenses.FragmentInterface, FragmentExpensesModify.FragmentInterface2 {
 
     private lateinit var viewModelExpenses: ViewModelInPocket
     private lateinit var adapter: AdapterInPocket
@@ -74,7 +74,11 @@ class ActivityInPocket : AppCompatActivity(), AdapterInPocket.AdapterInterface,
         viewModelExpenses.onItemDelete(item,position)
     }
 
-    override fun setSum(p: Int) {
+    override fun setSumMoney(p: Int) {
+        binding.tvHowMuchMoney.text=p.toString()
+    }
+
+    override fun setSpentMoney(p: Int) {
         binding.tvHOwMuchMonySpent.text=p.toString()
     }
 

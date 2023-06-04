@@ -30,7 +30,7 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <TextView
-            android:id="@+id/tvHowMuchMony"
+            android:id="@+id/tvHowMuchMoney"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="16dp"

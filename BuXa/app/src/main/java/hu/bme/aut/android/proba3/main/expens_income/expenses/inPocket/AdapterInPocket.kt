@@ -34,11 +34,21 @@ class AdapterInPocket(private val pocketName: String?, private val listener: Ada
 
     override fun getItemCount(): Int = payments.size
 
-    fun calculateSum(): Int{
+    fun calculateSpentMoney(): Int{
         var totalTvAmount = 0
         for(i in payments)
         {
+            if (i.expenseOrIncome=="income")
             totalTvAmount+=i.amount
+        }
+        return totalTvAmount
+    }
+    fun calculateMoney(): Int{
+        var totalTvAmount = 0
+        for(i in payments)
+        {
+            if (i.expenseOrIncome=="expenses")
+                totalTvAmount+=i.amount
         }
         return totalTvAmount
     }
@@ -48,26 +58,30 @@ class AdapterInPocket(private val pocketName: String?, private val listener: Ada
 
         payments.add(item)
         notifyItemInserted(payments.size - 1)
-        listener.setSum(calculateSum())
+        listener.setSpentMoney(calculateSpentMoney())
+        listener.setSumMoney(calculateMoney())
     }
 
     fun update(newPayments: List<ExpensItem>) {
         payments.clear()
         payments.addAll(newPayments)
         notifyDataSetChanged()
-        listener.setSum(calculateSum())
+        listener.setSpentMoney(calculateSpentMoney())
+        listener.setSumMoney(calculateMoney())
     }
 
     fun delete(position: Int){
         payments.removeAt(position)
         notifyDataSetChanged()
-        listener.setSum(calculateSum())
+        listener.setSpentMoney(calculateSpentMoney())
+        listener.setSumMoney(calculateMoney())
     }
 
     interface AdapterInterface {
         //azert kell mert a viewModel majd kitorli az adatbazisbol
         fun onItemDelete(item: ExpensItem, position: Int)
-        fun setSum(p: Int)
+        fun setSpentMoney(p: Int)
+        fun setSumMoney(p: Int)
         fun openFragmentModify(item: ExpensItem)
     }
 
