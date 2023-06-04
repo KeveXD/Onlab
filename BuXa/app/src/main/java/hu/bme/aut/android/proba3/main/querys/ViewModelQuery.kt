@@ -92,8 +92,4 @@ class ViewModelQuery: ViewModel() {
 
 
 
-    interface mainObserver{
-
-    }
-
 }

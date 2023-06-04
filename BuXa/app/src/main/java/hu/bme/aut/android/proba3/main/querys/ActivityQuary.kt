@@ -92,7 +92,7 @@ class ActivityQuery : AppCompatActivity(), AdapterQuery.AdapterInterface {
                 this,
                 { _, year, monthOfYear, dayOfMonth ->
                     startDate = String.format("%04d-%02d-%02d", year, monthOfYear + 1, dayOfMonth)
-                    binding.textView1.text = "Végső dátum: $startDate"
+                    binding.textView2.text = "Végső dátum: $startDate"
                 }, year, month, day
             )
             datePickerDialog.show()
