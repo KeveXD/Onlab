@@ -1,67 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:paddingBottom="8dp"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop="8dp">
+    android:layout_margin="8dp"
+    app:cardCornerRadius="8dp">
 
-    <TextView
-        android:id="@+id/tvWho"
-        android:layout_width="80dp"
-        android:layout_height="69dp"
-        tools:text="
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingTop="8dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:id="@+id/tvWho"
+            android:layout_width="80dp"
+            android:layout_height="69dp"
+            tools:text="
 
         Keve" />
 
-    <TextView
-        android:id="@+id/ivIcon"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_marginLeft="8dp"
-        android:text="Tartozik"
-        />
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
         <TextView
-            android:id="@+id/tvWhom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Misinek" />
+            android:id="@+id/ivIcon"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginLeft="8dp"
+            android:text="Tartozik" />
 
-        <TextView
-            android:id="@+id/tvDescription"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            tools:text="Leírás" />
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tvAmount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Összeg: 2000Ft" />
+            <TextView
+                android:id="@+id/tvWhom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Misinek" />
 
+            <TextView
+                android:id="@+id/tvDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Leírás" />
+
+            <TextView
+                android:id="@+id/tvAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Összeg: 2000Ft" />
+
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/ibEdit"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical"
+            android:scaleType="fitXY"
+            android:src="@drawable/kuka" />
 
     </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/ibEdit"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center_vertical"
-        android:scaleType="fitXY"
-        android:src="@drawable/kuka"
-        />
+</androidx.cardview.widget.CardView>
 
-</LinearLayout>
