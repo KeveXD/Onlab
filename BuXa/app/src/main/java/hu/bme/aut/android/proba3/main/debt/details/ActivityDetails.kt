@@ -7,7 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import hu.bme.aut.android.proba3.R
-import hu.bme.aut.android.proba3.databinding.ActivityDebtDetailsBinding
+import hu.bme.aut.android.proba3.databinding.DebtDetailsActivityBinding
 
 import hu.bme.aut.android.proba3.main.debt.data.RepositoryDebt
 import hu.bme.aut.android.proba3.main.debt.data.DebtItem
@@ -20,7 +20,7 @@ class Detailes : AppCompatActivity(), AdapterDetails.mainFigyeloInterface,ViewMo
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel= ViewModelProvider(this).get(ViewModelDetails::class.java)
-        val binding: ActivityDebtDetailsBinding = DataBindingUtil.setContentView(this, R.layout.activity_debt_details)
+        val binding: DebtDetailsActivityBinding = DataBindingUtil.setContentView(this, R.layout.debt_details_activity)
         val adapter: AdapterDetails = AdapterDetails(this)
         val database: RepositoryDebt=RepositoryDebt.getDatabase(applicationContext)
 

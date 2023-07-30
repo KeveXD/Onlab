@@ -14,7 +14,7 @@ class ViewModelDebt : ViewModel() {
 
     fun onItemDelete(item: DebtItem, position: Int) {
         thread {
-            database.DatabaseDebtFun().deleteItem(item)
+            database.databaseDebtFun().deleteItem(item)
 
             (context as Activity).runOnUiThread {
                 adapter.delete(position)
@@ -24,7 +24,7 @@ class ViewModelDebt : ViewModel() {
 
     fun newPaymentCreated(newItem: DebtItem) {
         thread {
-            val insertId = database.DatabaseDebtFun().insert(newItem)
+            val insertId = database.databaseDebtFun().insert(newItem)
             newItem.id = insertId
 
             (context as Activity).runOnUiThread {
@@ -35,7 +35,7 @@ class ViewModelDebt : ViewModel() {
 
     fun loadItemsInBackground() {
         thread {
-            val items = database.DatabaseDebtFun().getAll()
+            val items = database.databaseDebtFun().getAll()
 
             (context as Activity).runOnUiThread {
                 adapter.update(items)

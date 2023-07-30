@@ -20,9 +20,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
-import kotlinx.coroutines.withContext
-
-
 
 
 class MenuActivity : AppCompatActivity() {
@@ -81,15 +78,18 @@ class MenuActivity : AppCompatActivity() {
                 println("Email: $email") // Kiírja az e-mail címet a konzolra
 
                 val usersCollection = firestore.collection("felhasznalok")
-                val query = usersCollection.whereEqualTo("email", email)
+                val currentUserDocumentinFirestore = usersCollection.whereEqualTo("email", email)
 
-                query.get().addOnSuccessListener { querySnapshot ->
+                //lekerdezes eredmenye: querySnapshot
+                currentUserDocumentinFirestore.get().addOnSuccessListener { querySnapshot ->
                     if (!querySnapshot.isEmpty) {
+                        //kivalasztjuk az elso talalatot
                         val userDocument = querySnapshot.documents[0]
                         val dataCollection = userDocument.reference.collection("adatok")
 
                         // Adatok törlése a kollekcióból
                         dataCollection.get().addOnSuccessListener { snapshot ->
+                            //batch-el muveleteket lehet vegrehajtani egy tranzakcioban
                             val batch = firestore.batch()
                             for (document in snapshot.documents) {
                                 batch.delete(document.reference)
@@ -99,7 +99,7 @@ class MenuActivity : AppCompatActivity() {
                                     // Lekérdezés az összes elemről a Room adatbázisból
                                     CoroutineScope(Dispatchers.IO).launch {
                                         val database = RepositoryDebt.getDatabase(applicationContext)
-                                        val debtItems = database.DatabaseDebtFun().getAll()
+                                        val debtItems = database.databaseDebtFun().getAll()
 
                                         // Mentés az adatok kollekcióban
                                         val saveBatch = firestore.batch()
@@ -145,7 +145,7 @@ class MenuActivity : AppCompatActivity() {
                         // Törölje az összes elemet a Room adatbázisból
                         CoroutineScope(Dispatchers.IO).launch {
                             val database = RepositoryDebt.getDatabase(applicationContext)
-                            val daoDebt = database.DatabaseDebtFun()
+                            val daoDebt = database.databaseDebtFun()
                             daoDebt.deleteAll()
 
                             // Betöltés az adatokból a Room adatbázisba
@@ -163,29 +163,6 @@ class MenuActivity : AppCompatActivity() {
                 }
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     }
 }

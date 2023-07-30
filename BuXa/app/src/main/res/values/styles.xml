@@ -1,0 +1,27 @@
+<resources>
+
+    <!-- Alapértelmezett stílus -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <!-- Egyéb attribútumok, ha szükségesek -->
+        <!-- Például: textColor, colorPrimary, colorAccent, stb. -->
+
+        <!-- Példa: Fő szövegszín -->
+        <item name="android:textColor">@android:color/black</item>
+
+        <!-- Példa: Fő háttérszín -->
+        <item name="android:background">@android:color/white</item>
+
+        <!-- Példa: Gomb színe -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+
+        <!-- Példa: Kártya háttérszín -->
+        <item name="cardBackgroundColor">@color/colorCardBackground</item>
+    </style>
+
+    <style name="RoundedImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
+
+</resources>

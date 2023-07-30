@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase
 @Database(entities = [DebtItem::class], version = 1)
 
 abstract class RepositoryDebt : RoomDatabase() {
-    abstract fun DatabaseDebtFun(): DaoDebt
+    abstract fun databaseDebtFun(): DaoDebt
 
     companion object {
         fun getDatabase(applicationContext: Context): RepositoryDebt {

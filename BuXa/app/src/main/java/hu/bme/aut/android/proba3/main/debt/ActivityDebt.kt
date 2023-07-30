@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import hu.bme.aut.android.proba3.R
-import hu.bme.aut.android.proba3.databinding.ActivityDebtBinding
+import hu.bme.aut.android.proba3.databinding.DebtActivityBinding
 import hu.bme.aut.android.proba3.main.debt.data.RepositoryDebt
 import hu.bme.aut.android.proba3.main.debt.data.DebtItem
 import hu.bme.aut.android.proba3.main.debt.details.Detailes
@@ -20,8 +20,8 @@ class FunctionDebt : AppCompatActivity(), AdapterDebt.AdapterInterface,
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel= ViewModelProvider(this).get(ViewModelDebt::class.java)
-        val binding: ActivityDebtBinding = DataBindingUtil.setContentView(this, R.layout.activity_debt)
-        val adapter: AdapterDebt=AdapterDebt(this)
+        val binding: DebtActivityBinding = DataBindingUtil.setContentView(this, R.layout.debt_activity)
+        val adapter =AdapterDebt(this)
         val database: RepositoryDebt=RepositoryDebt.getDatabase(applicationContext)
         val plusz: FloatingActionButton = binding.pluszGomb
         val tovabb: Button = binding.bTovabb
@@ -42,7 +42,7 @@ class FunctionDebt : AppCompatActivity(), AdapterDebt.AdapterInterface,
             )
         }
 
-        //tovabb megy a szamolas ablakra (details)
+        //tovabbmegy a szamolas ablakra (details)
         tovabb.setOnClickListener{
             val intent = Intent(this, Detailes::class.java)
             startActivity(intent)

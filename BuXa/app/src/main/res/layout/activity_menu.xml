@@ -64,6 +64,7 @@
                 app:srcCompat="@drawable/kezdo"
                 tools:ignore="ContentDescription" />
 
+
             <LinearLayout
                 android:id="@+id/llQuery"
                 android:layout_width="0dp"

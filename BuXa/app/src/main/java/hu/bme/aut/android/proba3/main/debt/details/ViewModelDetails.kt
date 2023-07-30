@@ -22,7 +22,7 @@ class ViewModelDetails(): ViewModel() {
 
     fun loadItemsInBackground() {
         thread {
-            val items =database.DatabaseDebtFun().getAll().toMutableList()
+            val items =database.databaseDebtFun().getAll().toMutableList()
             (context as Activity).runOnUiThread {
                 adapter.update(items)
             }
