@@ -19,4 +19,6 @@ interface DaoDebt {
 
     @Query("DELETE FROM debtList")
     fun deleteAll()
+
+
 }
