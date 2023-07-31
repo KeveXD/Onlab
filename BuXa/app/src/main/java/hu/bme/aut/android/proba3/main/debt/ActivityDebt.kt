@@ -1,5 +1,6 @@
 package hu.bme.aut.android.proba3.main.debt
 
+import Proba
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,11 +9,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import hu.bme.aut.android.proba3.ProbaKetto
+
 import hu.bme.aut.android.proba3.R
 import hu.bme.aut.android.proba3.databinding.DebtActivityBinding
 import hu.bme.aut.android.proba3.main.debt.data.RepositoryDebt
 import hu.bme.aut.android.proba3.main.debt.data.DebtItem
-import hu.bme.aut.android.proba3.main.debt.details.Detailes
 
 lateinit var viewModel: ViewModelDebt
 class FunctionDebt : AppCompatActivity(), AdapterDebt.AdapterInterface,
@@ -25,6 +27,7 @@ class FunctionDebt : AppCompatActivity(), AdapterDebt.AdapterInterface,
         val database: RepositoryDebt=RepositoryDebt.getDatabase(applicationContext)
         val plusz: FloatingActionButton = binding.pluszGomb
         val tovabb: Button = binding.bTovabb
+        val addName: Button = binding.bAddName
 
 
         //init viewModel
@@ -44,7 +47,7 @@ class FunctionDebt : AppCompatActivity(), AdapterDebt.AdapterInterface,
 
         //tovabbmegy a szamolas ablakra (details)
         tovabb.setOnClickListener{
-            val intent = Intent(this, Detailes::class.java)
+            val intent = Intent(this, ProbaKetto::class.java)
             startActivity(intent)
         }
 

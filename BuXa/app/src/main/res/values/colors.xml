@@ -10,4 +10,14 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    //------------------------------------
+
+    <color name="text">#929189</color>
+    <color name="p1">#919373</color>
+    <color name="bg">#1c1c17</color>
+    <color name="p3">#3D3E2C</color>
+    <color name="primary">#929182</color>
+    <color name="p2">#2A3919</color>
+
 </resources>
