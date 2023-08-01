@@ -4,19 +4,20 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import hu.bme.aut.android.proba3.databinding.DebtListitemBinding
+import hu.bme.aut.android.proba3.databinding.P2Binding
 import hu.bme.aut.android.proba3.main.debt.data.DebtItem
 
 
 class AdapterDebt(private val listener: AdapterInterface) :
-    RecyclerView.Adapter<AdapterDebt.DeptListitemViewHolder>() {
+    RecyclerView.Adapter<AdapterDebt.DebtListitemViewHolder>() {
 
     private val payments = mutableListOf<DebtItem>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = DeptListitemViewHolder(
-        DebtListitemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = DebtListitemViewHolder(
+        P2Binding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
 
-    override fun onBindViewHolder(holder: DeptListitemViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: DebtListitemViewHolder, position: Int) {
         val p = payments[position]
 
         holder.binding.tvWho.text = p.who
@@ -54,5 +55,5 @@ class AdapterDebt(private val listener: AdapterInterface) :
         fun onItemDelete(item: DebtItem, position: Int)
     }
 
-    inner class DeptListitemViewHolder(val binding: DebtListitemBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class DebtListitemViewHolder(val binding: P2Binding) : RecyclerView.ViewHolder(binding.root)
 }
