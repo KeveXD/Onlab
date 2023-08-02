@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,7 +13,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import hu.bme.aut.android.proba3.ProbaKetto
 
 import hu.bme.aut.android.proba3.R
-import hu.bme.aut.android.proba3.databinding.DebtActivityBinding
+import hu.bme.aut.android.proba3.databinding.P1Binding
+import hu.bme.aut.android.proba3.databinding.P2Binding
+
 import hu.bme.aut.android.proba3.main.debt.data.RepositoryDebt
 import hu.bme.aut.android.proba3.main.debt.data.DebtItem
 
@@ -22,12 +25,12 @@ class FunctionDebt : AppCompatActivity(), AdapterDebt.AdapterInterface,
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel= ViewModelProvider(this).get(ViewModelDebt::class.java)
-        val binding: DebtActivityBinding = DataBindingUtil.setContentView(this, R.layout.debt_activity)
+        val binding: P1Binding = DataBindingUtil.setContentView(this, R.layout.p1)
         val adapter =AdapterDebt(this)
         val database: RepositoryDebt=RepositoryDebt.getDatabase(applicationContext)
-        val plusz: FloatingActionButton = binding.pluszGomb
-        val tovabb: Button = binding.bTovabb
-        val addName: Button = binding.bAddName
+        val plusz: ImageButton = binding.bPlus
+        val tovabb: ImageButton = binding.bNext
+        val addName: ImageButton = binding.bAddName
 
 
         //init viewModel

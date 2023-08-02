@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:color="@color/p3"
+        android:paddingTop="8dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="90dp"
+            android:layout_height="69dp"
+            android:gravity="center"
+            android:text="Keve" />
+
+        <ImageView
+            android:id="@+id/ivRevolut"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:src="@drawable/revolut" />
+
+
+        <Switch
+            android:id="@+id/switchRevolutInCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ibDelete"
+
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:scaleType="fitCenter"
+            android:src="@drawable/kuka"
+            app:shapeAppearanceOverlay="@style/RoundedImageView" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
