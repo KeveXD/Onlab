@@ -44,7 +44,7 @@
         </activity>
 
         <activity
-            android:name="hu.bme.aut.android.proba3.ProbaKetto"
+            android:name="hu.bme.aut.android.proba3.NameActivity"
             android:label="ProbaKettoActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
         </activity>

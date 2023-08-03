@@ -13,10 +13,10 @@ abstract class RepositoryDebtNames : RoomDatabase() {
     abstract fun databaseDebtFun(): DaoDebtNames
 
     companion object {
-        fun getDatabase(applicationContext: Context): RepositoryDebt {
+        fun getDatabase(applicationContext: Context): RepositoryDebtNames {
             return Room.databaseBuilder(
                 applicationContext,
-                RepositoryDebt::class.java,
+                RepositoryDebtNames::class.java,
                 "nameList"
             ).build();
         }

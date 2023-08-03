@@ -1,20 +1,16 @@
 package hu.bme.aut.android.proba3.main.debt
 
-import Proba
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import android.widget.ImageButton
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import hu.bme.aut.android.proba3.ProbaKetto
+import hu.bme.aut.android.proba3.NameActivity
 
 import hu.bme.aut.android.proba3.R
 import hu.bme.aut.android.proba3.databinding.P1Binding
-import hu.bme.aut.android.proba3.databinding.P2Binding
 
 import hu.bme.aut.android.proba3.main.debt.data.RepositoryDebt
 import hu.bme.aut.android.proba3.main.debt.data.DebtItem
@@ -22,6 +18,7 @@ import hu.bme.aut.android.proba3.main.debt.data.DebtItem
 lateinit var viewModel: ViewModelDebt
 class FunctionDebt : AppCompatActivity(), AdapterDebt.AdapterInterface,
     FragmentDebt.FragmentInterface {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel= ViewModelProvider(this).get(ViewModelDebt::class.java)
@@ -50,7 +47,7 @@ class FunctionDebt : AppCompatActivity(), AdapterDebt.AdapterInterface,
 
         //tovabbmegy a szamolas ablakra (details)
         tovabb.setOnClickListener{
-            val intent = Intent(this, ProbaKetto::class.java)
+            val intent = Intent(this, NameActivity::class.java)
             startActivity(intent)
         }
 
